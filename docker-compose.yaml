@@ -1,0 +1,35 @@
+version: '3'
+services:
+  database:
+    image: mariadb:10
+      environment:
+        - MYSQL_USER=stream
+        - MYSQL_PASSWORD=streamSecret
+        - MYSQL_DATABASE=stream
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      volumes:
+        - database:/var/lib/mysql
+        - ./mariadb-utf8.cnf:/etc/mysql/conf.d/utf8.cnf
+      networks:
+        backend:
+      restart: always
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+
+    ports:
+      - "3500:3500"
+    networks:
+      backend:
+    restart: always
+    depends_on:
+      - database
+
+networks:
+  backend:
+
+volumes:
+  database:

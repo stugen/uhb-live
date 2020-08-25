@@ -1,0 +1,26 @@
+root: true
+
+env:
+  browser: true
+  node: true
+  es6: true
+
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 2019
+  sourceType: module
+  project:
+    - './tsconfig.json'
+
+extends:
+  - 'standard'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+  - 'eslint:recommended'
+  - 'plugin:import/recommended'
+  - 'plugin:import/typescript'
+
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly

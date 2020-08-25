@@ -1,0 +1,80 @@
+{
+  "common": {
+    "title": "Uni Bremen Live Stream",
+    "university": "University of Bremen",
+    "footer": {
+      "contact": "Contact",
+      "telephone": "Phone",
+      "email": "Email",
+      "legal": "Legal",
+      "imprint": "Imprint",
+      "privacy": "Privacy",
+      "emergency": "Emergency",
+      "usefulLinks": "Useful Links",
+      "socialMedia": "Social Media"
+    },
+    "notFound": {
+      "head": "The requested page could not be found.",
+      "description": "Maybe there's a typo in the URL or the page was deleted."
+    }
+  },
+  "stream": {
+    "startsLater": "This stream starts on the {date} at {time}.",
+    "showOnlyChat": "Show only chat",
+    "showOnlyStream": "Show only video/stream",
+    "showStreamAndChat": "Show video/stream and chat"
+  },
+  "chat": {
+    "enterNameToStart": "Enter your name to start chatting",
+    "enterMessage": "Enter message ...",
+    "verifiedAccount": "This name is verified"
+  },
+  "login": {
+    "error": {
+      "title": "Login failed",
+      "body": "The login failed. There are multiple possible reasons for this: <ul><li>You don't have permission to login here.</li><li>The login action was cancelled.</li><li>The login token has expired.</li></ul>"
+    },
+    "waiting": {
+      "title": "Waiting for login ...",
+      "body": "The login token is being verified. This takes a short amount of time."
+    }
+  },
+  "admin": {
+    "title": "Administration mode",
+    "actions": {
+      "add": "Add stream/video",
+      "refresh": "Refresh view",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clearChat": "Clear chat history",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "hints": {
+      "clearChat": "Really delete chat history of stream '{name}'?",
+      "deleteStream": "Really delete stream '{name}'?"
+    },
+    "details": {
+      "name": "Name of video/stream",
+      "link": "Link",
+      "source": "Media source",
+      "chatEnabled": "Chat enabled",
+      "scheduled": "Scheduled",
+      "no": "No"
+    },
+    "editor": {
+      "titleNew": "Add new stream/video",
+      "titleEdit": "Edit stream/video",
+      "supportedMedia": "Supported are the usual browser video-formats as well as HLS-streams.",
+      "failure": "Failure while saving"
+    },
+    "placeholder": {
+      "name": "Welcome at Computer science in Bremen",
+      "link": "welcome-cs"
+    }
+  },
+  "start": {
+    "welcome": "Welcome to the video/stream platform!",
+    "info": "To access a specific stream or video, you need a special URL for it. Administrators may login via the button in the top right."
+  }
+}

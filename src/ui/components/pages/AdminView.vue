@@ -1,0 +1,22 @@
+<template>
+  <div class="admin">
+    <admin v-if="permitted"/>
+    <main class="container" v-if="!permitted">
+      <error-not-found/>
+    </main>
+  </div>
+</template>
+
+<script>
+import Admin from "../admin/Admin";
+import ErrorNotFound from "../common/ErrorNotFound";
+export default {
+  name: "AdminView",
+  components: {ErrorNotFound, Admin},
+  computed: {
+    permitted () {
+      return this.$store.state.loginUser.loggedIn
+    }
+  }
+}
+</script>

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "outDir": "./dist",
+    "allowJs": true,
+    "target": "es2019",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./src/typings",
+      "./node_modules/@types"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "./src/ui"
+  ],
+  "include": [
+    "./src"
+  ]
+}

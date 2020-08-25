@@ -1,0 +1,80 @@
+{
+  "common": {
+    "title": "Uni Bremen Live Stream",
+    "university": "Universität Bremen",
+    "footer": {
+      "contact": "Kontakt",
+      "telephone": "Telefon",
+      "email": "E-Mail",
+      "legal": "Rechtliches",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "emergency": "Notfall",
+      "usefulLinks": "Nützliche Links",
+      "socialMedia": "Social Media"
+    },
+    "notFound": {
+      "head": "Die angeforderte Seite konnte nicht gefunden werden.",
+      "description": "Möglicherweise liegt ein Tippfehler in der URL vor oder diese Seite wurde entfernt."
+    }
+  },
+  "stream": {
+    "startsLater": "Dieser Stream startet am {date} um {time} Uhr.",
+    "showOnlyChat": "Nur Chat zeigen",
+    "showOnlyStream": "Nur Video/Stream zeigen",
+    "showStreamAndChat": "Video/Stream und Chat anzeigen"
+  },
+  "chat": {
+    "enterNameToStart": "Name eingeben um am Chat teilzunehmen",
+    "enterMessage": "Nachricht eingeben ...",
+    "verifiedAccount": "Dieser Name ist verifiziert"
+  },
+  "login": {
+    "error": {
+      "title": "Anmeldung fehlgeschlagen",
+      "body": "Die Anmeldung ist fehlgeschlagen. Dies kann mehrere Gründe haben: <ul><li>Es liegt keine Berechtigung für den Admin-Bereich vor</li><li>Der Anmeldevorgang wurde abgebrochen.</li><li>Ein abgelaufenes Anmelde-Token wurde verwendet.</li></ul>"
+    },
+    "waiting": {
+      "title": "Warten auf Anmeldung ...",
+      "body": "Die Anmeldung wird geprüft. Dies kann einen Moment dauern."
+    }
+  },
+  "admin": {
+    "title": "Admin-Modus",
+    "actions": {
+      "add": "Stream/Video hinzufügen",
+      "refresh": "Ansicht aktualisieren",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "clearChat": "Chat-Verlauf löschen",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    },
+    "hints": {
+      "clearChat": "Wirklich den Chat-Verlauf vom Stream '{name}' löschen?",
+      "deleteStream": "Wirklich den Stream '{name}' löschen?"
+    },
+    "details": {
+      "name": "Video/Stream-Name",
+      "link": "Link",
+      "source": "Medienquelle",
+      "chatEnabled": "Chat aktiviert",
+      "scheduled": "Geplant",
+      "no": "Nein"
+    },
+    "editor": {
+      "titleNew": "Neuen Stream/Video hinzufügen",
+      "titleEdit": "Stream/Video bearbeiten",
+      "supportedMedia": "Unterstützt werden Videos in gängigen Browser-Formaten sowie HLS-Streams.",
+      "failure": "Fehler beim Speichern"
+    },
+    "placeholder": {
+      "name": "Begrüßung Erstsemester Informatik",
+      "link": "eso-begruessung"
+    }
+  },
+  "start": {
+    "welcome": "Willkommen im Video/Live-Stream-Portal!",
+    "info": "Um ein Video oder einen Stream direkt aufzurufen wird eine entsprechende URL benötigt. Administratoren können sich über den Login-Button oben rechts anmelden."
+  }
+}
