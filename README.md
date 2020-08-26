@@ -10,7 +10,7 @@
 2. Ensure yarn is installed. If it's not run `npm i -g yarn`.
 3. Clone this repository and change to that directory.
 4. Install dependencies with `yarn install`.
-5. Copy the settings template `config.example.yaml` to `config.yaml` and fill it.
+5. Copy the settings template `config.example.yml` to `config.yml` and fill it.
 6. Build this application with `yarn build`.
 7. Start this application with `yarn start`.
 
