@@ -20,7 +20,7 @@ const clientJwtMap = new Map<string, string>()
 const getSelfUrl = (req: Request): string => {
   const hostname = req.hostname
   let host = hostname
-  if (hostname === 'localhost' && config.get('port') !== 80) {
+  if (req.protocol === 'http' && hostname === 'localhost' && config.get('port') !== 80) {
     host += `:${config.get('port')}`
   }
   return url.format({

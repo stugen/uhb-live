@@ -3,6 +3,7 @@
 
 port: 3500
 bind: '127.0.0.1'
+reverseProxy: true
 
 dbType: 'sqlite'
 dbUrl: 'sqlite:./stream.db'

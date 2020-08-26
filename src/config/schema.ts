@@ -4,6 +4,7 @@ import randomstring from 'randomstring'
 interface ConfigSchema {
   port: number;
   bind: string;
+  reverseProxy: boolean;
   dbType: 'mariadb' | 'sqlite';
   dbUrl: string;
   tokenSecret: string;
@@ -25,6 +26,12 @@ export const configSchema: Schema<ConfigSchema> = {
     format: 'ipaddress',
     default: '127.0.0.1',
     env: 'STR_BIND'
+  },
+  reverseProxy: {
+    doc: 'True if the application runs behind a reverse proxy',
+    format: Boolean,
+    default: false,
+    env: 'STR_REVPROXY'
   },
   dbType: {
     doc: 'Type of the database that should be used.',

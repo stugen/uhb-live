@@ -14,6 +14,8 @@ const wss = new WebSocket.Server({
   server
 })
 
+app.set('trust proxy', config.get('reverseProxy'))
+
 // set common safety-practises
 app.use(helmet({
   frameguard: {
