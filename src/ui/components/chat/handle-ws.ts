@@ -66,7 +66,7 @@ export const handleMessage = (socket: WebSocket, data: string): ChatMessage | nu
 
 export const initializeWs = (): WebSocket => {
   const location = new URL(document.location.href)
-  const secure = location.protocol === 'https'
+  const secure = /^https:?$/.test(location.protocol)
   const host = location.host
 
   const socket = new WebSocket(`ws${secure ? 's' : ''}://${host}/chat`)
