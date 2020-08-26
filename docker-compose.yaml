@@ -19,7 +19,15 @@ services:
       context: .
       dockerfile: ./Dockerfile
     environment:
-
+      - STR_BIND=0.0.0.0
+      - STR_PORT=3500
+      - STR_REVPROXY=true
+      - STR_DBTYPE=mariadb
+      - STR_DBURL=mariadb://stream:streamSecret@database:3306/stream
+      # - STR_GLHOST=https://gitlab.com/
+      # - STR_GLCLIENTID=abc
+      # - STR_GLCLIENTSECRET=abc
+      # - STR_GLGROUP=0
     ports:
       - "3500:3500"
     networks:
