@@ -9,7 +9,9 @@ import { redirectLogin, requestToken, verifyResponse } from './auth-requests'
 export const getRouter = (): Router => {
   const router = express.Router()
 
-  router.use('/build', express.static(path.join(sourceRoot, 'ui')))
+  router.use('/build', express.static(path.join(sourceRoot, 'ui'), {
+    maxAge: 30 * 86400 * 1000
+  }))
 
   router.get('/data/streams', verifyTokenAuthenticity, sendAllStreams)
   router.post('/data/streams', verifyTokenAuthenticity, doAddStream)
