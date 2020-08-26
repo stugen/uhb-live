@@ -1,4 +1,5 @@
 import express from 'express'
+import compression from 'compression'
 import helmet from 'helmet'
 import http from 'http'
 import WebSocket from 'ws'
@@ -28,6 +29,7 @@ app.use(helmet({
   contentSecurityPolicy: false
 }))
 
+app.use(compression())
 app.use(express.json())
 app.use(getRouter())
 initializeWs(wss)
