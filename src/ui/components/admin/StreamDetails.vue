@@ -27,7 +27,7 @@
         <span class="icon"><font-awesome-icon icon="edit" class="fa"/></span>
         {{ $t('admin.actions.edit') }}
       </button>
-      <button class="card-footer-item button is-warning" @click="this.clearChat">
+      <button class="card-footer-item button is-warning" @click="this.clearChat" v-if="stream.chat">
         <span class="icon"><font-awesome-icon icon="eraser" class="fa"/></span>
         {{ $t('admin.actions.clearChat') }}
       </button>
@@ -48,8 +48,12 @@ export default {
   components: {EditModal},
   data () {
     return {
-      date: new Date(this.stream.startTime * 1000),
       showEditor: false
+    }
+  },
+  computed: {
+    date () {
+      return new Date(this.stream.startTime * 1000)
     }
   },
   methods: {
