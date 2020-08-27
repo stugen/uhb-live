@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main class="container px-4">
     <h1 class="is-size-3">{{ $t('admin.title') }}</h1>
     <button class="button" @click="showEditorNew">
       <span class="icon"><font-awesome-icon icon="plus" class="fa"/></span>
@@ -93,5 +93,11 @@ export default {
 <style scoped>
 h1 {
   margin-block-end: 1rem;
+}
+
+@media screen and (max-width: 910px) {
+  .columns {
+    flex-flow: column;
+  }
 }
 </style>

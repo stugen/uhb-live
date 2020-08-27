@@ -1,6 +1,6 @@
 <template>
   <header class="container">
-    <div class="level">
+    <div class="level is-flex">
       <div class="level-left">
         <div class="level-item">
           <a href="https://www.uni-bremen.de" target="_blank">
@@ -53,6 +53,7 @@ export default {
 
   .level-right {
     align-items: start;
+    margin-inline-end: 0.5rem;
 
     .level-item > a {
       margin-block-start: 0.25rem;
@@ -67,6 +68,24 @@ export default {
 
   .level-item > a {
     margin-inline-start: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .level-left a {
+    width: 50px;
+    overflow: hidden;
+
+    & > img {
+      height: 50px;
+      max-width: none;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .level {
+    display: block !important;
   }
 }
 </style>

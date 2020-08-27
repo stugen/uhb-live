@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main class="container px-4">
     <error-not-found/>
   </main>
 </template>

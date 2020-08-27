@@ -116,4 +116,10 @@ export default {
     word-break: break-all;
   }
 }
+
+@media screen and (max-width: 396px){
+  .card-footer.field.is-grouped {
+    flex-flow: column;
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main class="container px-4">
     <h1 v-if="!error">{{metadata.name || name}}</h1>
     <div class="columns" v-if="loaded">
       <div :class="{'column': true, 'is-three-fifths': metadata.chat && showChatIfAvailable}" v-if="showStreamIfAvailable">

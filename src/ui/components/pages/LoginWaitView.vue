@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main class="container px-4">
     <div class="message" :class="{'is-info': !isError, 'is-danger': isError}">
       <div class="message-body" v-if="isError">
         <b>{{ $t('login.error.title') }}</b><br>

@@ -76,7 +76,7 @@ export default {
 
 <style scoped lang="scss">
 .chat {
-  height: 26.75vw;
+  height: 50vh;
   background-color: #f3f3f3;
   padding: 1rem 0 0.25rem 0;
   position: relative;

@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
     <admin v-if="permitted"/>
-    <main class="container" v-if="!permitted">
+    <main class="container px-4" v-if="!permitted">
       <error-not-found/>
     </main>
   </div>

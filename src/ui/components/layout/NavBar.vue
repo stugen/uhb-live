@@ -1,14 +1,14 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar is-hidden-mobile">
     <div class="container">
       <div class="navbar-brand">
-        <a role="button" class="navbar-burger burger" data-target="mainNav">
+        <a role="button" class="navbar-burger burger" data-target="mainNav" @click="menuOpened = !menuOpened">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-menu" id="mainNav">
+      <div class="navbar-menu" id="mainNav" :class="{'menu-visible': menuOpened}">
         <div class="navbar-start">
           <a href="https://www.uni-bremen.de" target="_blank" class="navbar-item">Universität Bremen</a>
           <a href="https://stugen.de" target="_blank" class="navbar-item">Stugen</a>
@@ -20,7 +20,12 @@
 
 <script>
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  data () {
+    return {
+      menuOpened: false
+    }
+  }
 }
 </script>
 
@@ -41,6 +46,19 @@ export default {
   &:hover, &:active, &:focus, &.active {
     background-color: #ba002c;
     color: #ffffff;
+  }
+}
+.navbar-burger {
+  color: #ffffff;
+}
+
+.navbar-menu.menu-visible {
+  display: block;
+  background-color: #21467a;
+
+  a {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
   }
 }
 </style>
