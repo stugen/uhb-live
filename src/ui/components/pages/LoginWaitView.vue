@@ -35,6 +35,7 @@ export default {
         .then(response => response.json())
         .then(json => {
           window.sessionStorage.setItem('token', json.token)
+          window.sessionStorage.setItem('token-ts', `${Math.floor(Date.now() / 1000)}`)
           this.$store.commit('setLoginData', json)
           this.$router.push('/admin')
         })
