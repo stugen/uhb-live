@@ -17,6 +17,9 @@ export default {
     permitted () {
       return this.$store.state.loginUser.loggedIn
     }
+  },
+  mounted () {
+    document.title = `${this.$t('admin.title')} - ${this.$t('common.title')}`
   }
 }
 </script>
