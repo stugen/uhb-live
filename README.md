@@ -1,4 +1,4 @@
-# Stugen stream interface
+# Uni Bremen Live - video/stream interface
 
 ## Docker setup
 1. Ensure docker and docker-compose are installed.

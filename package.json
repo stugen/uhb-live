@@ -1,5 +1,5 @@
 {
-  "name": "stugen-stream-ui",
+  "name": "uhb-live",
   "version": "0.1.0",
   "description": "Web-frontend for video streams with open chat ability",
   "main": "dist/app.js",
@@ -16,6 +16,10 @@
     "watch-server": "nodemon --ext ts --exec 'tsc --incremental && yarn start'",
     "build-ui": "webpack --config webpack.prod.cjs",
     "watch-ui": "webpack --config webpack.dev.cjs --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stugen/uhb-live.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",

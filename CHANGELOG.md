@@ -4,6 +4,7 @@
 **Added**:
  - Config option `reverseProxy` to fix problems with reverse-proxies
  - Missing environment variables in the `docker-compose.yaml`
+ - Metadata about the software (version etc.) into the generated HTML
 
 **Improved**:
  - Better caching and compression logic for static files

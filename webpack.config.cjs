@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
+const pkg = require('./package.json')
+
 module.exports = {
     entry: {
         'stream-ui': "./src/ui/index.ts"
@@ -72,7 +74,10 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: "./src/ui/index.ejs"
+            template: "./src/ui/index.ejs",
+            pkg: pkg,
+            author: pkg.author.replace(/<[\w.@-]+>$/, '').trim(),
+            git: pkg.repository.url.replace(/\.git$/, '')
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
