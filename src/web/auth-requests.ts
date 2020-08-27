@@ -32,6 +32,7 @@ const getSelfUrl = (req: Request): string => {
 export const redirectLogin = (req: Request, res: Response): void => {
   if (!req.query.client) {
     res.status(400).send()
+    return
   }
   const clientId = req.query.client as string
   const self = getSelfUrl(req)
@@ -42,6 +43,7 @@ export const redirectLogin = (req: Request, res: Response): void => {
 export const requestToken = (req: Request, res: Response): void => {
   if (!req.query.code || !req.query.state) {
     res.status(400).send()
+    return
   }
   const code = req.query.code as string
   const client = req.query.state as string
