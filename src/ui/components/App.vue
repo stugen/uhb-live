@@ -44,4 +44,31 @@ main {
   margin-left: 0;
   margin-right: 0;
 }
+
+body.noscript {
+  background-color: #E53935;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+
+  .media-left {
+    margin-right: 2.5rem;
+  }
+
+  svg {
+    height: 9rem;
+    overflow: hidden;
+  }
+
+  .content {
+    h1, p, a {
+      color: #ffffff;
+    }
+
+    a:hover, a:focus, a:active {
+      text-decoration: underline;
+    }
+  }
+}
 </style>

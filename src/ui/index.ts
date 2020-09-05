@@ -21,3 +21,5 @@ new Vue({
   store,
   i18n
 }).$mount('main')
+
+window.document.body.classList.remove('noscript')
