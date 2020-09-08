@@ -9,13 +9,13 @@ on:
 jobs:
   build-image:
     runs-on: ubuntu-latest
-    name: Lints the code
+    name: Build :dev tag and publish to GitHub pkg
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Login to docker registry
         run: podman login -u ${{ secrets.GH_USER }} -p ${{ secrets.GH_TOKEN }} docker.pkg.github.com
       - name: Build image
-        run: buildah bud -t docker.pkg.github.com/stugen/uhb-live/uhb-live:dev .
+        run: buildah bud --format docker -t docker.pkg.github.com/stugen/uhb-live/uhb-live:dev .
       - name: Publish to GitHub packages
         run: podman push docker.pkg.github.com/stugen/uhb-live/uhb-live:dev
