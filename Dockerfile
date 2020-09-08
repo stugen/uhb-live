@@ -6,10 +6,8 @@ LABEL maintainer="Erik Michelson <opensource@erik.michelson.eu>" \
 WORKDIR /app
 
 RUN apk add sqlite
-COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install --frozen-lockfile
 COPY . .
+RUN yarn install --frozen-lockfile
 RUN yarn build; \
     rm -rf src/; \
     yarn install --production --ignore-scripts --prefer-offline --frozen-lockfile
