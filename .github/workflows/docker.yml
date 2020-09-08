@@ -1,0 +1,21 @@
+name: Build docker image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+      name: Lints the code
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Login to docker registry
+          run: podman login -u ${{ secrets.GH_USER }} -p ${{ secrets.GH_TOKEN }} docker.pkg.github.com
+        - name: Build image
+          run: buildah bud -t docker.pkg.github.com/stugen/uhb-live/uhb-live:dev .
+        - name: Publish to GitHub packages
+          run: podman push docker.pkg.github.com/stugen/uhb-live/uhb-live:dev
