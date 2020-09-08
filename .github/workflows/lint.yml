@@ -1,0 +1,28 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_requests:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lints the code
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cache node_modules
+        uses: actions/cache@v1.1.0
+        with:
+          path: node_modules
+          key: node_modules
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: yarn install
+      - name: Run ESLint
+        run: yarn lint
