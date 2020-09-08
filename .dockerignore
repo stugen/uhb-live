@@ -1,0 +1,8 @@
+.git/
+.github/
+.idea/
+dist/
+node_modules/
+*.log
+*.db
+config.yml
