@@ -1,6 +1,8 @@
 # Stugen stream interface
 
-## Unreleased
+Please note that the API is subject to change in all 0.x minor-versions. 
+
+## 0.2.0 :: 2020-09-08
 **Added**:
  - Config option `reverseProxy` to fix problems with reverse-proxies
  - Missing environment variables in the `docker-compose.yaml`
@@ -18,6 +20,7 @@
  - An expired login token caused errors thrown in the console, token-timestamp evaluation solves that issue
  - An incorrect call to the login route caused an error because of not stopping evaluation after sending the HTTP 400
  - The docker build was failing due to a formatting error in the docker-compose.yaml
+ - Usage of MariaDB backend resulted in app crash 
 
 ## 0.1.0 :: 2020-08-25
 **Initial release**
