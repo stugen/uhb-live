@@ -1,5 +1,10 @@
 # Uni Bremen Live - video/stream interface
 
+**This is the develop branch.**  
+It contains uncomplete and undocumented code. Running it may fail and falls under your own risk.
+
+For more stable code see the "main"-branch or the releases.
+
 ## Docker setup
 1. Ensure docker and docker-compose are installed.
 2. Change the configuration in docker-compose.yaml
