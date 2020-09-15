@@ -1,4 +1,4 @@
-name: Lint
+name: Build
 
 on:
   push:
@@ -9,7 +9,10 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lints the code
+    strategy:
+      matrix:
+        node: [ '12', '14' ]
+    name: Build with NodeJS ${{ matrix.node }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -21,8 +24,8 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: ${{ matrix.node }}
       - name: Install dependencies
         run: yarn install
-      - name: Run ESLint
-        run: yarn lint
+      - name: Build app
+        run: yarn build
