@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  code:
     runs-on: ubuntu-latest
     name: Lints the code
     steps:
@@ -26,3 +26,17 @@ jobs:
         run: yarn install
       - name: Run ESLint
         run: yarn lint
+  openapi:
+    runs-on: ubuntu-latest
+    name: Lints the OpenAPI spec
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install speccy
+        run: yarn global add speccy
+      - name: Run speccy on openapi.yml
+        run: speccy lint docs/openapi.yml
