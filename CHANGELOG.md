@@ -1,4 +1,4 @@
-# Stugen stream interface
+# Uni Bremen Live - video/stream interface
 
 Please note that the API is subject to change in all 0.x minor-versions. 
 
