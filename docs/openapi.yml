@@ -285,6 +285,10 @@ paths:
 components:
   schemas:
     streamEntry:
+      required:
+        - name
+        - shortName
+        - sources
       properties:
         uuid:
           type: string
@@ -293,12 +297,10 @@ components:
           example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
         name:
           type: string
-          required: true
           description: Display name of the stream/video.
           example: 'Test-stream'
         shortName:
           type: string
-          required: true
           description: Short identifier used as URL slug.
           example: 'test'
         sources:
@@ -306,22 +308,22 @@ components:
           description: List of available sources/mirrors.
           minItems: 1
           items:
+            required:
+              - url
+              - weight
             properties:
               url:
                 type: string
-                required: true
                 description: The URL of the mirror or source file or stream.
                 example: 'https://example.com/video.mp4'
               weight:
                 type: integer
-                required: true
                 minimum: 0
                 description: Weight factor to prefer this source over others. A higher factor results in a higher usage.
                 default: 1
                 example: 1
         description:
           type: string
-          required: false
           description: Optional description of the stream/video. May contain basic Markdown syntax.
           example: 'This is the description. It allows **markdown** formatting.'
         chat:
@@ -363,7 +365,6 @@ components:
           default: false
         senderMail:
           type: string
-          required: false
           description: Email address of the verified sender. This field is reserved for future use.
           example: 'john.doe@uni-bremen.de'
         content:
@@ -375,6 +376,10 @@ components:
       items:
         $ref: '#/components/schemas/chatMessage'
     collection:
+      required:
+        - name
+        - shortName
+        - items
       properties:
         uuid:
           type: string
@@ -384,25 +389,20 @@ components:
         name:
           type: string
           description: Display name of the collection.
-          required: true
           example: 'Demo videos and streams'
         shortName:
           type: string
-          required: true
           description: Unique short name used as URL slug.
           example: 'demo'
         description:
           type: string
           description: Description of the collection. Allows basic markdown syntax.
-          required: false
           example: 'This is the description containing **markdown** syntax.'
         items:
           type: array
-          required: true
           description: List of video/stream uuids being part of the collection.
           items:
             type: string
-            required: true
             description: The uuid of a stream/video of the collection.
             example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
 
@@ -422,6 +422,9 @@ components:
       in: path
       required: true
       description: The uuid of the object to operate on.
+      schema:
+        type: string
+        example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
 
   securitySchemes:
     adminToken:
