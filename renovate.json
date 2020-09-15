@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": ["pin"],
+      "automerge": true
+    },
+    {
+      "extends": "packages:linters",
+      "groupName": "linters"
+    },
+    {
+      "extends": "monorepo:typescript-eslint",
+      "groupName": "typescript-eslint monorepo"
+    },
+    {
+      "extends": "monorepo:vue",
+      "groupName": "vue monorepo"
+    },
+    {
+      "groupName": "definitelyTyped",
+      "packagePatterns": [
+        "^@types/"
+      ]
+    },
+    {
+      "groupName": "FontAwesome",
+      "packagePatterns": [
+        "^@fortawesome/"
+      ]
+    }
+  ],
+  "prHourlyLimit": 0,
+  "schedule": [
+    "on Wednesday"
+  ]
+}
