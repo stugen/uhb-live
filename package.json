@@ -9,13 +9,15 @@
   "private": true,
   "scripts": {
     "start": "node --experimental-specifier-resolution=node dist/app.js",
-    "lint": "eslint --ext .ts src",
+    "lint": "yarn run lint-code && yarn run lint-openapi",
     "build": "yarn run build-server && yarn run build-ui",
     "watch": "echo 'Run yarn watch-server and yarn watch-ui in separate console windows.'",
     "build-server": "tsc",
     "watch-server": "nodemon --ext ts --exec 'tsc --incremental && yarn start'",
     "build-ui": "webpack --config webpack.prod.cjs",
-    "watch-ui": "webpack --config webpack.dev.cjs --watch"
+    "watch-ui": "webpack --config webpack.dev.cjs --watch",
+    "lint-code": "eslint --ext .ts src",
+    "lint-openapi": "speccy lint docs/openapi.yml"
   },
   "repository": {
     "type": "git",
@@ -80,6 +82,7 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "sass-loader": "^9.0.3",
+    "speccy": "^0.11.0",
     "style-loader": "^1.2.1",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
