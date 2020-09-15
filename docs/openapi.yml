@@ -16,12 +16,12 @@ servers:
     description: The base API path relative to the root of the domain with the uhb-live instance.
 
 tags:
-  - name: stream
-    description: Contains API endpoints for adding, viewing and modifying video streams or files.
   - name: chat
     description: Contains API endpoints for viewing and clearing chat rooms.
   - name: collection
     description: Contains API endpoints for adding, viewing and modifying collections of streams.
+  - name: stream
+    description: Contains API endpoints for adding, viewing and modifying video streams or files.
 
 paths:
   /stream:
