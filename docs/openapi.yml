@@ -169,6 +169,119 @@ paths:
         '404':
           $ref: '#/components/responses/notFound'
 
+  /collection:
+    get:
+      tags:
+        - collection
+      operationId: getAllCollections
+      summary: Get a list of all collections
+      description: This endpoint returns a list of all collections available on the instance. This requires administrative permissions.
+      security:
+        - adminToken: []
+      responses:
+        '200':
+          description: Successful return of the list of collections.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/collection'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+    post:
+      tags:
+        - collection
+      operationId: createCollection
+      summary: Create a new collection
+      description: This endpoint creates a new collection of stream/video objects.
+      security:
+        - adminToken: []
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/collection'
+      responses:
+        '201':
+          description: The collection was successfully created.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/collection'
+        '400':
+          $ref: '#/components/responses/invalidFormat'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '409':
+          $ref: '#/components/responses/duplicateEntry'
+
+  /collection/{uuid}:
+    get:
+      tags:
+        - collection
+      operationId: getCollection
+      summary: Get a specific collection
+      description: This endpoint returns the specific details about a collection.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      responses:
+        '200':
+          description: Succesful return of collection details
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/collection'
+        '404':
+          $ref: '#/components/responses/notFound'
+    put:
+      tags:
+        - collection
+      operationId: updateCollection
+      summary: Updates a specific collection
+      description: This endpoint updates a specific collection by overriding the previous values. It requires administrative permissions.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      security:
+        - adminToken: []
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/collection'
+      responses:
+        '200':
+          description: The collection was successfully updated.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/collection'
+        '400':
+          $ref: '#/components/responses/invalidFormat'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '404':
+          $ref: '#/components/responses/notFound'
+        '409':
+          $ref: '#/components/responses/duplicateEntry'
+    delete:
+      tags:
+        - collection
+      operationId: deleteCollection
+      summary: Deletes a specific collection
+      description: This endpoint deletes a specific collection without deleting the streams/videos itself. It requires administrative permissions.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      security:
+        - adminToken: []
+      responses:
+        '204':
+          description: The collection was successfully deleted.
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '404':
+          $ref: '#/components/responses/notFound'
+
 components:
   schemas:
     streamEntry:
@@ -261,6 +374,37 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/chatMessage'
+    collection:
+      properties:
+        uuid:
+          type: string
+          readOnly: true
+          description: Unique identifier of the collection.
+          example: '2b4d7523-d441-40d7-bb9c-e9bcc6a8c840'
+        name:
+          type: string
+          description: Display name of the collection.
+          required: true
+          example: 'Demo videos and streams'
+        shortName:
+          type: string
+          required: true
+          description: Unique short name used as URL slug.
+          example: 'demo'
+        description:
+          type: string
+          description: Description of the collection. Allows basic markdown syntax.
+          required: false
+          example: 'This is the description containing **markdown** syntax.'
+        items:
+          type: array
+          required: true
+          description: List of video/stream uuids being part of the collection.
+          items:
+            type: string
+            required: true
+            description: The uuid of a stream/video of the collection.
+            example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
 
   responses:
     accessDenied:
@@ -269,6 +413,8 @@ components:
       description: The endpoint requires data to be in a defined format. The request failed because the data doesn't have that format.
     notFound:
       description: The requested object could not be found.
+    duplicateEntry:
+      description: There is already an entry conflicting with the new one.
 
   parameters:
     paramUuid:
