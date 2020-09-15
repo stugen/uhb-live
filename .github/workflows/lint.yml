@@ -44,4 +44,4 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run speccy on openapi.yml
-        run: speccy lint docs/openapi.yml
+        run: yarn lint-openapi
