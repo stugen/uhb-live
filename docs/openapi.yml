@@ -1,0 +1,284 @@
+openapi: 3.0.3
+
+info:
+  title: Uni Bremen Live - stream/video interface
+  description: Web-interface with chat functionality for video streams and files.
+  version: 0.3.0
+  license:
+    name: MIT
+    url: https://github.com/stugen/uhb-live/blob/main/LICENSE
+  contact:
+    name: Erik Michelson
+    email: opensource@erik.michelson.eu
+
+servers:
+  - url: '/api/v1'
+    description: The base API path relative to the root of the domain with the uhb-live instance.
+
+tags:
+  - name: stream
+    description: Contains API endpoints for adding, viewing and modifying video streams or files.
+  - name: chat
+    description: Contains API endpoints for viewing and clearing chat rooms.
+  - name: collection
+    description: Contains API endpoints for adding, viewing and modifying collections of streams.
+
+paths:
+  /stream:
+    get:
+      tags:
+        - stream
+      operationId: getAllStreams
+      summary: Get a list of all video streams/files
+      description: This endpoint returns the complete list of video streams/files. It is mainly used by the admin panel and requires administrative permissions.
+      security:
+        - adminToken: []
+      responses:
+        '200':
+          description: Successful return of a list
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/streamList'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+    post:
+      tags:
+        - stream
+      operationId: createStream
+      summary: Create a new video/stream object
+      description: This endpoint is used to create a new video stream/file entry. It requires administrative permissions.
+      security:
+        - adminToken: []
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/streamEntry'
+      responses:
+        '201':
+          description: The entry was successfully created.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/streamEntry'
+        '400':
+          $ref: '#/components/responses/invalidFormat'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+
+  /stream/{uuid}:
+    get:
+      tags:
+        - stream
+      operationId: getStream
+      summary: Get the data for a specific stream
+      description: This endpoint returns specific data for a stream/video identified by its uuid. This endpoint is public and may be used by the frontend.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      responses:
+        '200':
+          description: Successful return of the requested entry.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/streamEntry'
+        '404':
+          $ref: '#/components/responses/notFound'
+    put:
+      tags:
+        - stream
+      operationId: updateStream
+      summary: Updates a specific stream entry
+      description: This endpoint updates a specific stream entry by overriding its values. It requires administrative permissions.
+      security:
+        - adminToken: []
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/streamEntry'
+      responses:
+        '200':
+          description: The entry was successfully updated.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/streamEntry'
+        '400':
+          $ref: '#/components/responses/invalidFormat'
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '404':
+          $ref: '#/components/responses/notFound'
+    delete:
+      tags:
+        - stream
+      operationId: deleteStream
+      summary: Deletes a specific stream entry
+      description: This endpoint deletes a specific stream entry irreversably altogether with the history of the attached chat room (if any). It requires administrative permissions.
+      security:
+        - adminToken: []
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      responses:
+        '204':
+          description: The stream/video entry was successfully deleted.
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '404':
+          $ref: '#/components/responses/notFound'
+
+  /chat/{uuid}:
+    get:
+      tags:
+        - chat
+      operationId: getRecentChatMessages
+      summary: Get recent chat messages of a room
+      description: This endpoint returns the least recent 100 chat messages of a specific room. The room uuid equals to the uuid of the stream to which the chat is bound.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      responses:
+        '200':
+          description: Successful return of a list of chat messages
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/chatMessageList'
+        '404':
+          $ref: '#/components/responses/notFound'
+    delete:
+      tags:
+        - chat
+      operationId: clearChatRoom
+      summary: Clears a specific chat room
+      description: This endpoint clears a specific chat room by deleting all of the messages in it. The endpoint requires administrative permissions.
+      parameters:
+        - $ref: '#/components/parameters/paramUuid'
+      security:
+        - adminToken: []
+      responses:
+        '204':
+          description: The chat room was succesfully cleared.
+        '403':
+          $ref: '#/components/responses/accessDenied'
+        '404':
+          $ref: '#/components/responses/notFound'
+
+components:
+  schemas:
+    streamEntry:
+      properties:
+        uuid:
+          type: string
+          readOnly: true
+          description: Unique identifier of the stream object.
+          example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
+        name:
+          type: string
+          required: true
+          description: Display name of the stream/video.
+          example: 'Test-stream'
+        shortName:
+          type: string
+          required: true
+          description: Short identifier used as URL slug.
+          example: 'test'
+        sources:
+          type: array
+          description: List of available sources/mirrors.
+          minItems: 1
+          items:
+            properties:
+              url:
+                type: string
+                required: true
+                description: The URL of the mirror or source file or stream.
+                example: 'https://example.com/video.mp4'
+              weight:
+                type: integer
+                required: true
+                minimum: 0
+                description: Weight factor to prefer this source over others. A higher factor results in a higher usage.
+                default: 1
+                example: 1
+        description:
+          type: string
+          required: false
+          description: Optional description of the stream/video. May contain basic Markdown syntax.
+          example: 'This is the description. It allows **markdown** formatting.'
+        chat:
+          type: boolean
+          description: True if the chat room of this stream/video is enabled.
+          default: true
+        startTime:
+          type: integer
+          description: Timestamp of when the stream/video should be made public. A value of 0 makes the stream instantly public.
+          example: 1600203949
+          default: 0
+    streamList:
+      type: array
+      items:
+        $ref: '#/components/schemas/streamEntry'
+    chatMessage:
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier of this chat message.
+          readOnly: true
+          example: 'e8d20345-dd77-4386-bbb2-ff9a0037ebe7'
+        timestamp:
+          type: integer
+          readOnly: true
+          description: Timestamp when the message was sent.
+          example: 1600207206
+        room:
+          type: string
+          description: Unique identifier of the room to which this message belongs.
+          example: '0d152aee-b8fb-49e0-91ac-10c137f2f403'
+        sender:
+          type: string
+          description: Display name of the sender of this message.
+          example: 'John Doe'
+        senderVerified:
+          type: boolean
+          description: True if the sender name is verified. This means that the message was sent by an administrator.
+          default: false
+        senderMail:
+          type: string
+          required: false
+          description: Email address of the verified sender. This field is reserved for future use.
+          example: 'john.doe@uni-bremen.de'
+        content:
+          type: string
+          description: The message content itself.
+          example: 'Hello World!'
+    chatMessageList:
+      type: array
+      items:
+        $ref: '#/components/schemas/chatMessage'
+
+  responses:
+    accessDenied:
+      description: Access to this endpoint was denied. Either no access token was provided or the token is invalid.
+    invalidFormat:
+      description: The endpoint requires data to be in a defined format. The request failed because the data doesn't have that format.
+    notFound:
+      description: The requested object could not be found.
+
+  parameters:
+    paramUuid:
+      name: uuid
+      in: path
+      required: true
+      description: The uuid of the object to operate on.
+
+  securitySchemes:
+    adminToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT containing properties "username" and "iat"
