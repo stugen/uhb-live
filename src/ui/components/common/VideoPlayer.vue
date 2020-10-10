@@ -7,6 +7,8 @@ import videojs from 'video.js'
 import videojsLocaleEn from 'video.js/dist/lang/en.json'
 import videojsLocaleDe from 'video.js/dist/lang/de.json'
 import 'videojs-youtube/dist/Youtube.min'
+import 'videojs-hls-quality-selector'
+import 'videojs-contrib-quality-levels'
 
 export default {
   name: "VideoPlayer",
@@ -38,6 +40,10 @@ export default {
         modestbranding: 1,
         rel: 0
       }
+    })
+    this.player.qualityLevels()
+    this.player.hlsQualitySelector({
+      displayCurrentQuality: true
     })
   },
   beforeDestroy () {
