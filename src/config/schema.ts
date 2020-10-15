@@ -42,7 +42,7 @@ export const configSchema: Schema<ConfigSchema> = {
   dbUrl: {
     doc: 'Connection URL of the database that should be used.',
     format: String,
-    default: 'sqlite:./uhb-stugen-stream.db',
+    default: 'sqlite:./stream.db',
     env: 'STR_DBURL'
   },
   tokenSecret: {

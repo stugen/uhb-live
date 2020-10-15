@@ -11,7 +11,7 @@ dbUrl: 'sqlite:./stream.db'
 #dbType: 'mariadb'
 #dbUrl: 'mariadb://username:password@host:port/database'
 
-gitlabHost: 'https://gitlab.com'
+gitlabHost: 'https://gitlab.informatik.uni-bremen.de/'
 gitlabClientId: ''
 gitlabClientSecret: ''
 gitlabGroup: 1234
