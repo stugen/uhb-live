@@ -1,19 +1,23 @@
 import 'reflect-metadata'
-import typeorm, { Connection, Repository } from 'typeorm'
+import { createConnection, Connection, Repository } from 'typeorm'
 import { config } from '../config/config-loader'
 import { Stream } from '../models/Stream'
 import { ChatMessage } from '../models/ChatMessage'
-
-const { createConnection } = typeorm
+import { StreamSource } from '../models/StreamSource'
+import { Collection } from '../models/Collection'
 
 export let streamRepository: Repository<Stream> = null
+export let streamSourceRepository: Repository<StreamSource> = null
 export let chatMessageRepository: Repository<ChatMessage> = null
+export let collectionRepository: Repository<Collection> = null
 
 const connectDatabase = (): Promise<Connection> => {
   const commonConfig = {
     entities: [
       Stream,
-      ChatMessage
+      StreamSource,
+      ChatMessage,
+      Collection
     ],
     synchronize: true
   }
@@ -36,6 +40,8 @@ export const initDatabase = new Promise<void>((resolve, reject) => {
   connectDatabase().then(connection => {
     streamRepository = connection.getRepository(Stream)
     chatMessageRepository = connection.getRepository(ChatMessage)
+    streamSourceRepository = connection.getRepository(StreamSource)
+    collectionRepository = connection.getRepository(Collection)
     resolve()
   }).catch((error: Error) => {
     reject(error)
