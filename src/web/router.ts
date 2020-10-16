@@ -1,10 +1,9 @@
 import path from 'path'
 import express, { Router } from 'express'
 import { sourceRoot } from '../helper/paths'
-import { send404, serveVueApp, verifyTokenAuthenticity } from './common-requests'
-import { doAddStream, doDeleteStream, doUpdateStream, sendAllStreams, sendStreamData } from './stream-requests'
-import { doClearChat, sendRecentChatMessages } from './chat-requests'
+import { send404, serveVueApp } from './common-requests'
 import { redirectLogin, requestToken, verifyResponse } from './auth-requests'
+import { getApiRouter } from './api-router'
 
 export const getRouter = (): Router => {
   const router = express.Router()
@@ -13,14 +12,7 @@ export const getRouter = (): Router => {
     maxAge: 30 * 86400 * 1000
   }))
 
-  router.get('/data/streams', verifyTokenAuthenticity, sendAllStreams)
-  router.post('/data/streams', verifyTokenAuthenticity, doAddStream)
-  router.get('/data/stream/:streamname', sendStreamData)
-  router.delete('/data/stream/:uuid', verifyTokenAuthenticity, doDeleteStream)
-  router.put('/data/stream/:uuid', verifyTokenAuthenticity, doUpdateStream)
-  router.get('/data/chat/:streamname', sendRecentChatMessages)
-  router.delete('/data/chat/:uuid', verifyTokenAuthenticity, doClearChat)
-  router.all('/data', send404)
+  router.use('/api/v1/', getApiRouter())
 
   router.get('/auth/login', redirectLogin)
   router.get('/auth/callback', requestToken)
