@@ -5,6 +5,7 @@
   "labels": [
     "dependencies"
   ],
+  "baseBranches": ["main", "develop"],
   "packageRules": [
     {
       "updateTypes": ["pin"],
