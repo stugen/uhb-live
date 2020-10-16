@@ -24,7 +24,9 @@ export class Stream {
   description: string;
 
   /** List of weighted sources that are available for the stream/video. */
-  @OneToMany(() => StreamSource, source => source.stream)
+  @OneToMany(() => StreamSource, source => source.stream, {
+    eager: true
+  })
   sources: StreamSource[];
 
   /** Optional unix-timestamp of the time when the stream should be published. */
