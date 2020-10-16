@@ -1,14 +1,12 @@
 import { NextFunction, Request, Response } from 'express'
 import path from 'path'
-import jsonwebtoken from 'jsonwebtoken'
+import { verify } from 'jsonwebtoken'
 import { sourceRoot } from '../helper/paths'
 import { getStreamByName } from '../controller/stream'
 import { Stream } from '../models/Stream'
 import { ChatMessage } from '../models/ChatMessage'
 import { getRecentChatMessages } from '../controller/chat'
 import { config } from '../config/config-loader'
-
-const { verify } = jsonwebtoken
 
 export enum FetchedData {
   STREAM,
