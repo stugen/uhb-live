@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import typeorm from 'typeorm'
+const { Entity, Column, PrimaryGeneratedColumn } = typeorm
 
 /**
  * This entity represents a single chat message in any room.

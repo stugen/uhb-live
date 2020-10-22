@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import path from 'path'
-import { verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { sourceRoot } from '../helper/paths'
 import { getStreamByName } from '../controller/stream'
 import { Stream } from '../models/Stream'
@@ -9,6 +9,7 @@ import { getRecentChatMessages } from '../controller/chat'
 import { config } from '../config/config-loader'
 import { getCollectionByName } from '../controller/collection'
 import { Collection } from '../models/Collection'
+const { verify } = jwt
 
 export enum FetchedData {
   STREAM,

@@ -1,10 +1,11 @@
 import 'reflect-metadata'
-import { createConnection, Connection, Repository } from 'typeorm'
+import typeorm, { Connection, Repository } from 'typeorm'
 import { config } from '../config/config-loader'
 import { Stream } from '../models/Stream'
 import { ChatMessage } from '../models/ChatMessage'
 import { StreamSource } from '../models/StreamSource'
 import { Collection } from '../models/Collection'
+const { createConnection } = typeorm
 
 export let streamRepository: Repository<Stream> = null
 export let streamSourceRepository: Repository<StreamSource> = null

@@ -1,5 +1,6 @@
 import { Stream } from './Stream'
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import typeorm from 'typeorm'
+const { Column, Entity, OneToMany, PrimaryGeneratedColumn } = typeorm
 
 /**
  * This entity represents a browsable collection of streams/videos.

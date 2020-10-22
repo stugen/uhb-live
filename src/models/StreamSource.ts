@@ -1,5 +1,6 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import typeorm from 'typeorm'
 import { Stream } from './Stream'
+const { Entity, Column, ManyToOne, PrimaryGeneratedColumn } = typeorm
 
 /**
  * Interface to represent the data that is given from the frontend to the server.
@@ -41,6 +42,6 @@ export class StreamSource {
   weight: number;
 
   /** The associated stream to this source. */
-  @ManyToOne(() => Stream, stream => stream.sources)
+  @ManyToOne('Stream', 'sources')
   stream: Stream;
 }

@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm'
+import typeorm from 'typeorm'
 import { StreamSource } from './StreamSource'
 import { Collection } from './Collection'
+const { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } = typeorm
 
 /**
  * Entity that represents a stream/video.
@@ -24,7 +25,7 @@ export class Stream {
   description: string;
 
   /** List of weighted sources that are available for the stream/video. */
-  @OneToMany(() => StreamSource, source => source.stream, {
+  @OneToMany('StreamSource', 'stream', {
     eager: true
   })
   sources: StreamSource[];
@@ -38,6 +39,6 @@ export class Stream {
   chat: boolean;
 
   /** Collection to which this stream/video belongs to. */
-  @ManyToOne(() => Collection, collection => collection.items)
+  @ManyToOne('Collection', 'items')
   collection: Collection
 }

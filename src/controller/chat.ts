@@ -1,8 +1,9 @@
-import { verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { DeleteResult } from 'typeorm'
 import { chatMessageRepository } from '../helper/database'
 import { ChatMessage } from '../models/ChatMessage'
 import { config } from '../config/config-loader'
+const { verify } = jwt
 
 /**
  * Queries and returns the most recent 100 chat messages for a stream/video room.
