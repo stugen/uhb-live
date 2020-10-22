@@ -5,7 +5,7 @@
       <br />
       <span>
         <b>{{ $t('admin.details.link') }}: </b>
-        <router-link :to="`/stream/${stream.shortName}`">/stream/{{ stream.shortName }}</router-link>
+        <router-link :to="`/v/${stream.shortName}`">/v/{{ stream.shortName }}</router-link>
       </span>
       <span>
         <b>{{ $t('admin.details.source') }}: </b>
@@ -62,7 +62,7 @@ export default {
       if (!confirm) {
         return
       }
-      window.fetch(`/data/stream/${this.stream.uuid}`, {
+      window.fetch(`/api/v1/stream/${this.stream.uuid}`, {
         method: 'DELETE',
         headers: {
           authorization: 'Bearer ' + this.$store.state.loginUser.token
@@ -80,7 +80,7 @@ export default {
       if (!confirm) {
         return
       }
-      window.fetch(`/data/chat/${this.stream.uuid}`, {
+      window.fetch(`/api/v1/chat/${this.stream.uuid}`, {
         method: 'DELETE',
         headers: {
           authorization: 'Bearer ' + this.$store.state.loginUser.token

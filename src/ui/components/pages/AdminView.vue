@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Admin from "../admin/Admin";
+import Admin from "../admin/AdminStreams";
 import ErrorNotFound from "../common/ErrorNotFound";
 export default {
   name: "AdminView",

@@ -10,10 +10,11 @@ import './utils/font-awesome'
 import './utils/verifyAccessToken'
 import 'vue-datetime/dist/vue-datetime.css'
 
+window.document.body.classList.remove('noscript')
+setClientId()
+
 Vue.use(VueRouter)
 Vue.component('datetime', Datetime)
-
-setClientId()
 
 new Vue({
   render: (vueRender): VNode => vueRender(App),
@@ -21,5 +22,3 @@ new Vue({
   store,
   i18n
 }).$mount('main')
-
-window.document.body.classList.remove('noscript')

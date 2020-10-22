@@ -1,8 +1,13 @@
+interface StreamSource {
+  weight: number;
+  url: string;
+}
+
 export interface StreamMetadata {
   name: string;
   uuid: string;
   shortName: string;
-  source: string;
+  sources: StreamSource[];
   startTime: number;
   chat: boolean;
 }

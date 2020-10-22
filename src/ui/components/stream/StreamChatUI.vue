@@ -3,16 +3,16 @@
     <h1 v-if="!error">{{metadata.name || name}}</h1>
     <div class="columns" v-if="loaded">
       <div :class="{'column': true, 'is-three-fifths': metadata.chat && showChatIfAvailable}" v-if="showStreamIfAvailable">
-        <player :src="metadata.source"/>
+        <player :src="metadata.sources"/>
       </div>
       <div class="column" v-if="metadata.chat && showChatIfAvailable" :class="{'is-two-fifths': showStreamIfAvailable}">
         <chat :room="metadata.uuid"/>
       </div>
     </div>
     <div class="links" v-if="loaded">
-      <router-link :to="'/video/' + name"><font-awesome-icon icon="play-circle"/>{{ $t('stream.showOnlyStream') }}</router-link>
-      <router-link :to="'/chat/' + name" v-if="metadata.chat"><font-awesome-icon icon="comments"/>{{ $t('stream.showOnlyChat') }}</router-link>
-      <router-link :to="'/stream/' + name" v-if="metadata.chat">{{ $t('stream.showStreamAndChat') }}</router-link>
+      <router-link :to="'/v/' + name + '/video'"><font-awesome-icon icon="play-circle"/>{{ $t('stream.showOnlyStream') }}</router-link>
+      <router-link :to="'/v/' + name + '/chat'" v-if="metadata.chat"><font-awesome-icon icon="comments"/>{{ $t('stream.showOnlyChat') }}</router-link>
+      <router-link :to="'/v/' + name" v-if="metadata.chat">{{ $t('stream.showStreamAndChat') }}</router-link>
     </div>
     <div class="message is-info release-info" v-if="checkInterval !== 0">
       <div class="message-body">

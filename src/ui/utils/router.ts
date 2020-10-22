@@ -13,15 +13,18 @@ const routes: RouteConfig[] = [
     component: StartView
   },
   {
-    path: '/stream/:streamname',
+    path: '/c/:collection'
+  },
+  {
+    path: '/v/:streamname',
     component: StreamView
   },
   {
-    path: '/chat/:streamname',
+    path: '/v/:streamname/chat',
     component: ChatOnlyView
   },
   {
-    path: '/video/:streamname',
+    path: '/v/:streamname/video',
     component: VideoView
   },
   {
@@ -31,6 +34,12 @@ const routes: RouteConfig[] = [
   {
     path: '/admin',
     component: AdminView
+  },
+  {
+    path: '/admin/videos'
+  },
+  {
+    path: '/admin/collections'
   },
   {
     path: '*',

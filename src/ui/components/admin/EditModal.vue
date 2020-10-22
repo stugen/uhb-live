@@ -101,11 +101,11 @@ export default {
         this.scheduled = true
         this.startDateTimeInput = new Date(this.stream.startTime * 1000).toISOString()
       }
-      window.fetch('/data/streams', {
+      window.fetch('/api/v1/stream', {
         mode: 'cors',
         cache: 'no-cache',
         headers: {
-          authorization: this.$store.state.loginUser.token
+          authorization: 'Bearer ' + this.$store.state.loginUser.token
         }
       })
           .then(response => response.json())
@@ -117,7 +117,7 @@ export default {
           })
     },
     save () {
-      const url = this.stream.uuid === '' ? '/data/streams' : `/data/stream/${this.stream.uuid}`
+      const url = this.stream.uuid === '' ? '/api/v1/stream' : `/api/v1/stream/${this.stream.uuid}`
       if (this.scheduled) {
         this.stream.startTime = Date.parse(this.startDateTimeInput) / 1000
       } else {

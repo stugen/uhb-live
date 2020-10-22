@@ -21,19 +21,22 @@ export default {
         liveui: true,
         sources: [
           {
-            src: this.src
+            src: ''
           }
         ]
       },
       muted: false
     }
   },
-  props: {
-    src: {
-      type: String
-    }
-  },
+  props: ['src'],
   created () {
+    if (this.src.length > 1) {
+      const randWeights = this.src.map(w => (Math.random() * w.weight))
+      const index = randWeights.indexOf(Math.max(...randWeights))
+      this.options.sources[0].src = this.src[index].url
+    } else {
+      this.options.sources[0].src = this.src[0].url
+    }
     if (/^https?:\/\/(?:www)\.youtu(?:\.be|be\.com)\//.test(this.src)) {
       this.options.sources[0].type = 'video/youtube'
     }
