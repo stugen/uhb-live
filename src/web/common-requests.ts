@@ -7,10 +7,13 @@ import { Stream } from '../models/Stream'
 import { ChatMessage } from '../models/ChatMessage'
 import { getRecentChatMessages } from '../controller/chat'
 import { config } from '../config/config-loader'
+import { getCollectionByName } from '../controller/collection'
+import { Collection } from '../models/Collection'
 
 export enum FetchedData {
   STREAM,
-  CHATLOG
+  CHATLOG,
+  COLLECTION
 }
 
 export const serveVueApp = (req: Request, res: Response): void => {
@@ -18,15 +21,18 @@ export const serveVueApp = (req: Request, res: Response): void => {
 }
 
 export const sendControlledData = async (type: FetchedData, req: Request, res: Response): Promise<void> => {
-  const streamName = req.params.streamname
+  const slug = req.params.slug
   try {
-    let data: Stream | ChatMessage[]
+    let data: Stream | ChatMessage[] | Collection
     switch (type) {
       case FetchedData.STREAM:
-        data = await getStreamByName(streamName)
+        data = await getStreamByName(slug)
         break
       case FetchedData.CHATLOG:
-        data = await getRecentChatMessages(streamName)
+        data = await getRecentChatMessages(slug)
+        break
+      case FetchedData.COLLECTION:
+        data = await getCollectionByName(slug)
     }
     if (!data) {
       res.status(404).send()
