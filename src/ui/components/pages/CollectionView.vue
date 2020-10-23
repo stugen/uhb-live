@@ -1,11 +1,11 @@
 <template>
-  <collection-view/>
+  <collection-page/>
 </template>
 
 <script>
-import CollectionView from "../collection/CollectionView";
+import CollectionPage from "../collection/CollectionPage";
 export default {
   name: "CollectionView",
-  components: {CollectionView}
+  components: {CollectionPage}
 }
 </script>

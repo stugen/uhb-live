@@ -24,6 +24,8 @@ export class Collection {
   description: string;
 
   /** Streams/videos that are part of this collection. */
-  @OneToMany(() => Stream, stream => stream.collection)
+  @OneToMany('Stream', 'collection', {
+    eager: true
+  })
   items: Stream[]
 }

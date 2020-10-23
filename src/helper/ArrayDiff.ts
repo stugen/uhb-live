@@ -22,8 +22,8 @@ export const arrayDiff = <T>(a: T[], b: T[], criteria?: string[]): { added: T[],
       if (criteria) {
         let aEqualsB = true
         for (const criterium of criteria) {
-          if (!(Object.prototype.hasOwnProperty.call(a, criterium) &&
-            Object.prototype.hasOwnProperty.call(b, criterium) &&
+          if (!(Object.prototype.hasOwnProperty.call(a[iA], criterium) &&
+            Object.prototype.hasOwnProperty.call(b[iB], criterium) &&
             a[iA][criterium] === b[iB][criterium])) {
             aEqualsB = false
             break
@@ -42,6 +42,6 @@ export const arrayDiff = <T>(a: T[], b: T[], criteria?: string[]): { added: T[],
       deleted.push(a[iA])
     }
   }
-  added.concat(b)
+  added.push(...b)
   return { added, equal, deleted }
 }

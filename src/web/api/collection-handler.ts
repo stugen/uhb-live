@@ -29,6 +29,7 @@ export const restDeleteCollection = async (req: Request, res: Response): Promise
     await deleteCollection(uuid)
     res.status(204).send()
   } catch (e) {
+    console.error(e)
     res.status(500).send()
   }
 }

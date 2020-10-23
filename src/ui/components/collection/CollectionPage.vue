@@ -1,7 +1,8 @@
 <template>
   <main class="container px-4">
-    <h1 v-if="!error">{{ collection.name }}</h1>
+    <h1 class="is-h1" v-if="!error">{{ collection.name }}</h1>
     <div class="content my-4" v-html="descriptionHtml" v-if="!loading && !error"></div>
+    <hr>
     <div class="columns" v-if="!loading && !error">
       <div class="column">
         <collection-item v-for="item in itemsFirstHalf" :key="item.uuid" :item="item"/>
@@ -25,7 +26,7 @@ import {getMetadata, MetadataType} from "../common/FetchApiData";
 import ErrorNotFound from "../common/ErrorNotFound";
 import CollectionItem from "./CollectionItem";
 export default {
-  name: "CollectionView",
+  name: "CollectionPage",
   components: {CollectionItem, ErrorNotFound},
   data () {
     return {

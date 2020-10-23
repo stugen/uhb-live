@@ -21,7 +21,8 @@ export const getAllCollections = (): Promise<Collection[]> => {
   return collectionRepository.find({
     order: {
       shortName: 'ASC'
-    }
+    },
+    loadEagerRelations: false
   })
 }
 

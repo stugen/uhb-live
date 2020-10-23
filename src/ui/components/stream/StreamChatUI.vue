@@ -1,6 +1,6 @@
 <template>
   <main class="container px-4">
-    <h1 v-if="!error">{{metadata.name || name}}</h1>
+    <h1 class="is-h1" v-if="!error">{{metadata.name || name}}</h1>
     <div class="columns" v-if="loaded">
       <div :class="{'column': true, 'is-three-fifths': metadata.chat && showChatIfAvailable}" v-if="showStreamIfAvailable">
         <player :src="metadata.sources"/>
@@ -104,11 +104,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1 {
-  font-size: 2rem;
-  color: #21467a;
-  margin-block-end: 0.5rem;
-}
 .release-info {
   margin-top: 1.2rem;
 }

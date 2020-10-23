@@ -45,6 +45,12 @@ main {
   margin-right: 0;
 }
 
+h1.is-h1 {
+  font-size: 2rem;
+  color: #21467a;
+  margin-block-end: 0.5rem;
+}
+
 body.noscript {
   background-color: #E53935;
   width: 100vw;

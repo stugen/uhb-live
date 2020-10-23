@@ -42,6 +42,8 @@ export class StreamSource {
   weight: number;
 
   /** The associated stream to this source. */
-  @ManyToOne('Stream', 'sources')
+  @ManyToOne('Stream', 'sources', {
+    onDelete: 'CASCADE'
+  })
   stream: Stream;
 }

@@ -30,6 +30,7 @@ export const restDeleteStream = async (req: Request, res: Response): Promise<voi
     await deleteStream(uuid)
     res.status(204).send()
   } catch (e) {
+    console.error(e)
     res.status(500).send()
   }
 }
