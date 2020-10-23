@@ -60,7 +60,8 @@
       "source": "Medienquelle",
       "chatEnabled": "Chat aktiviert",
       "scheduled": "Geplant",
-      "no": "Nein"
+      "no": "Nein",
+      "description": "Beschreibungstext"
     },
     "editor": {
       "titleNew": "Neuen Stream/Video hinzufügen",
@@ -70,8 +71,11 @@
     },
     "placeholder": {
       "name": "Begrüßung Erstsemester Informatik",
-      "link": "eso-begruessung"
-    }
+      "link": "eso-begruessung",
+      "description": "Einführungsvideo. **Markdown-support, yay!**"
+    },
+    "streams":  "Streams",
+    "collections": "Sammlungen"
   },
   "start": {
     "welcome": "Willkommen im Video/Live-Stream-Portal!",

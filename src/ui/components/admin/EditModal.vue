@@ -18,10 +18,18 @@
             <input class="input" type="text" :placeholder="this.$t('admin.placeholder.link')" pattern="[a-zA-Z0-9-]" id="em-slug" v-model="stream.shortName"/>
           </div>
         </div>
-        <div class="field" :title="this.$t('admin.editor.supportedMedia')">
-          <label class="label" for="em-src">{{ $t('admin.details.source') }}</label>
+        <div class="media-sources">
+            <div class="field" :title="this.$t('admin.editor.supportedMedia')">
+              <label class="label" for="em-src">{{ $t('admin.details.source') }}</label>
+              <div class="control">
+                <input class="input" id="em-src" type="url" placeholder="https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov" v-model="stream.sources[0].url"/>
+              </div>
+            </div>
+        </div>
+        <div class="field">
+          <label class="label" for="em-desc">{{ $t('admin.details.description') }}</label>
           <div class="control">
-            <input class="input" type="url" placeholder="https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov" id="em-src" v-model="stream.source"/>
+            <textarea class="textarea" :placeholder="this.$t('admin.placeholder.description')" id="em-desc" v-model="stream.description"/>
           </div>
         </div>
         <div class="field">
@@ -66,8 +74,12 @@ export default {
         uuid: '',
         name: '',
         shortName: '',
+        description: '',
         chat: true,
-        source: '',
+        sources: [{
+          weight: 1,
+          url: ''
+        }],
         startTime: 0
       },
       startDateTimeInput: '',
@@ -85,7 +97,7 @@ export default {
       return (
           !!this.stream.name &&
           !!this.stream.shortName &&
-          !!this.stream.source &&
+          !!this.stream.sources[0].url &&
           link
       )
     }
@@ -123,6 +135,7 @@ export default {
       } else {
         this.stream.startTime = 0
       }
+
       window.fetch(url, {
         mode: 'cors',
         method: this.stream.uuid === '' ? 'POST' : 'PUT',

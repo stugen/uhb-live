@@ -60,7 +60,8 @@
       "source": "Media source",
       "chatEnabled": "Chat enabled",
       "scheduled": "Scheduled",
-      "no": "No"
+      "no": "No",
+      "description": "Description"
     },
     "editor": {
       "titleNew": "Add new stream/video",
@@ -70,8 +71,11 @@
     },
     "placeholder": {
       "name": "Welcome at Computer science in Bremen",
-      "link": "welcome-cs"
-    }
+      "link": "welcome-cs",
+      "description": "Introduction video. **Markdown support, yay!**"
+    },
+    "streams":  "Streams",
+    "collections": "Collections"
   },
   "start": {
     "welcome": "Welcome to the video/stream platform!",

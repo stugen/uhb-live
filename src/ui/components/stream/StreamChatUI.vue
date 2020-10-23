@@ -14,6 +14,7 @@
       <router-link :to="'/v/' + name + '/chat'" v-if="metadata.chat"><font-awesome-icon icon="comments"/>{{ $t('stream.showOnlyChat') }}</router-link>
       <router-link :to="'/v/' + name" v-if="metadata.chat">{{ $t('stream.showStreamAndChat') }}</router-link>
     </div>
+    <div class="content my-4" v-if="loaded && showStreamIfAvailable" v-html="this.description"></div>
     <div class="message is-info release-info" v-if="checkInterval !== 0">
       <div class="message-body">
         <b>{{ $t('stream.startsLater', { time: streamStart.time, date: streamStart.date }) }}</b>
@@ -31,7 +32,8 @@ import Player from './Player'
 import { getMetadata } from './FetchStreamData'
 import Chat from '../chat/Chat'
 import LoadingSpinner from '../common/LoadingSpinner'
-import ErrorNotFound from "../common/ErrorNotFound";
+import ErrorNotFound from "../common/ErrorNotFound"
+import markdownIt from 'markdown-it'
 export default {
   name: 'StreamChatUI',
   components: {ErrorNotFound, LoadingSpinner, Chat, Player },
@@ -46,6 +48,12 @@ export default {
         date: '',
         time: ''
       }
+    }
+  },
+  computed: {
+    description () {
+      const markdown = this.metadata.description || ''
+      return markdownIt().render(markdown)
     }
   },
   props: {

@@ -1,6 +1,6 @@
 <template>
   <main class="container px-4">
-    <h1 class="is-size-3">{{ $t('admin.title') }}</h1>
+    <h1 class="is-size-3">{{ $t('admin.streams') }}</h1>
     <button class="button" @click="showEditorNew">
       <span class="icon"><font-awesome-icon icon="plus" class="fa"/></span>
       {{ $t('admin.actions.add') }}
@@ -36,8 +36,12 @@ export default {
         uuid: '',
         name: '',
         shortName: '',
+        description: '',
         chat: true,
-        source: '',
+        sources: [{
+          weight: 1,
+          url: ''
+        }],
         startTime: 0
       }
     }
@@ -79,8 +83,12 @@ export default {
         uuid: '',
         name: '',
         shortName: '',
+        description: '',
         chat: true,
-        source: '',
+        sources: [{
+          weight: 1,
+          url: ''
+        }],
         startTime: 0
       }
       this.$refs.editor.update()

@@ -43,6 +43,7 @@
     "js-yaml": "^3.14.0",
     "jsonwebtoken": "^8.5.1",
     "luxon": "^1.25.0",
+    "markdown-it": "^12.0.1",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",
     "randomstring": "^1.1.5",

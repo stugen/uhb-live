@@ -9,7 +9,11 @@
       </span>
       <span>
         <b>{{ $t('admin.details.source') }}: </b>
-        <a :href="stream.source" target="_blank">{{ stream.source }}</a>
+        <a :href="stream.sources[0].url" target="_blank">{{ stream.sources[0].url }}</a>
+      </span>
+      <span>
+        <b>{{ $t('admin.details.description') }}: </b>
+        <span>{{ stream.description.substr(0, 100) + '&hellip;' }}</span>
       </span>
       <span>
         <b>{{ $t('admin.details.chatEnabled') }}: </b>

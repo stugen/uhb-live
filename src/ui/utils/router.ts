@@ -5,6 +5,7 @@ import VideoView from '../components/pages/VideoView.vue'
 import NotFound from '../components/pages/NotFound.vue'
 import LoginWaitView from '../components/pages/LoginWaitView.vue'
 import AdminView from '../components/pages/AdminView.vue'
+import AdminStreamsView from '../components/pages/AdminStreamsView.vue'
 import StartView from '../components/pages/StartView.vue'
 
 const routes: RouteConfig[] = [
@@ -36,7 +37,8 @@ const routes: RouteConfig[] = [
     component: AdminView
   },
   {
-    path: '/admin/videos'
+    path: '/admin/videos',
+    component: AdminStreamsView
   },
   {
     path: '/admin/collections'
