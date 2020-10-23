@@ -29,7 +29,7 @@
 
 <script>
 import Player from './Player'
-import { getMetadata } from './FetchStreamData'
+import {getMetadata, MetadataType} from '../common/FetchApiData'
 import Chat from '../chat/Chat'
 import LoadingSpinner from '../common/LoadingSpinner'
 import ErrorNotFound from "../common/ErrorNotFound"
@@ -82,7 +82,7 @@ export default {
     }
   },
   created () {
-    getMetadata(this.name).then((metadata) => {
+    getMetadata(this.name, MetadataType.STREAM).then((metadata) => {
       this.metadata = metadata
       this.setTitle()
       if (metadata.startTime !== 0) {

@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <admin v-if="permitted"/>
+    <admin-collections v-if="permitted"/>
     <main class="container px-4" v-if="!permitted">
       <error-not-found/>
     </main>
@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import Admin from "../admin/AdminOverview";
 import ErrorNotFound from "../common/ErrorNotFound";
+import AdminCollections from "../admin/AdminCollections";
 export default {
   name: "AdminView",
-  components: {ErrorNotFound, Admin},
+  components: {AdminCollections, ErrorNotFound},
   computed: {
     permitted () {
       return this.$store.state.loginUser.loggedIn
     }
   },
   mounted () {
-    document.title = `${this.$t('admin.title')} - ${this.$t('common.title')}`
+    document.title = `${this.$t('admin.title')} ${this.$t('admin.collections')} - ${this.$t('common.title')}`
   }
 }
 </script>

@@ -6,7 +6,9 @@ import NotFound from '../components/pages/NotFound.vue'
 import LoginWaitView from '../components/pages/LoginWaitView.vue'
 import AdminView from '../components/pages/AdminView.vue'
 import AdminStreamsView from '../components/pages/AdminStreamsView.vue'
+import AdminCollectionsView from '../components/pages/AdminCollectionsView.vue'
 import StartView from '../components/pages/StartView.vue'
+import CollectionView from '../components/pages/CollectionView.vue'
 
 const routes: RouteConfig[] = [
   {
@@ -14,7 +16,8 @@ const routes: RouteConfig[] = [
     component: StartView
   },
   {
-    path: '/c/:collection'
+    path: '/c/:collection',
+    component: CollectionView
   },
   {
     path: '/v/:streamname',
@@ -41,7 +44,8 @@ const routes: RouteConfig[] = [
     component: AdminStreamsView
   },
   {
-    path: '/admin/collections'
+    path: '/admin/collections',
+    component: AdminCollectionsView
   },
   {
     path: '*',

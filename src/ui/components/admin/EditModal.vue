@@ -120,13 +120,13 @@ export default {
           authorization: 'Bearer ' + this.$store.state.loginUser.token
         }
       })
-          .then(response => response.json())
-          .then(json => {
-            this.names = json.map(str => str.shortName)
-          })
-          .catch(error => {
-            console.error(error)
-          })
+        .then(response => response.json())
+        .then(json => {
+          this.names = json.map(str => str.shortName)
+        })
+        .catch(error => {
+          console.error(error)
+        })
     },
     save () {
       const url = this.stream.uuid === '' ? '/api/v1/stream' : `/api/v1/stream/${this.stream.uuid}`
@@ -135,6 +135,13 @@ export default {
       } else {
         this.stream.startTime = 0
       }
+      console.log(JSON.stringify({
+        ...this.stream,
+        sources: [
+            ...this.stream.sources[0]
+        ]
+      }))
+      return
 
       window.fetch(url, {
         mode: 'cors',
