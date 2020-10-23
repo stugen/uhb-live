@@ -54,18 +54,29 @@ export default {
       this.$emit('hide')
     },
     save () {
-      window.fetch(`/api/v1/collection${this.uuid !== '' ? '/' + this.uuid : ''}`, {
+      window.fetch(`/api/v1/collection${this.uuid && this.uuid !== '' ? '/' + this.uuid : ''}`, {
         mode: 'cors',
         headers: {
-          authorization: 'Bearer ' + this.$store.state.loginUser.token
+          authorization: 'Bearer ' + this.$store.state.loginUser.token,
+          'content-type': 'application/json'
         },
-        method: this.uuid === '' ? 'POST' : 'PUT'
+        body: JSON.stringify(this.collection),
+        method: !this.uuid || this.uuid === '' ? 'POST' : 'PUT'
+      }).then(() => {
+        this.failure = false
+        this.hide()
+      }).catch(error => {
+        console.error(error)
+        this.failure = true
       })
+    },
+    update () {
+      this.collection = this['edit-collection']
     }
   },
   computed: {
     saveAllowed () {
-      return
+      return this.collection.name.trim() !== '' && this.collection.shortName.trim() !== ''
     }
   }
 }

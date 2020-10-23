@@ -135,14 +135,7 @@ export default {
       } else {
         this.stream.startTime = 0
       }
-      console.log(JSON.stringify({
-        ...this.stream,
-        sources: [
-            ...this.stream.sources[0]
-        ]
-      }))
-      return
-
+      const json = JSON.stringify(this.stream)
       window.fetch(url, {
         mode: 'cors',
         method: this.stream.uuid === '' ? 'POST' : 'PUT',
@@ -150,7 +143,7 @@ export default {
           authorization: 'Bearer ' + this.$store.state.loginUser.token,
           'content-type': 'application/json'
         },
-        body: JSON.stringify(this.stream)
+        body: json
       }).then(() => {
         this.hide()
       }).catch((error) => {

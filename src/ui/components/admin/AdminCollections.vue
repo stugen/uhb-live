@@ -24,9 +24,10 @@
 
 <script>
 import CollectionCard from "./CollectionCard";
+import EditCollectionModal from "./EditCollectionModal";
 export default {
   name: "AdminCollections",
-  components: {CollectionCard},
+  components: {CollectionCard, EditCollectionModal},
   data () {
     return {
       editorVisible: false,
@@ -49,6 +50,7 @@ export default {
     },
     hideEditor () {
       this.editorVisible = false
+      this.updateCollections()
     },
     updateCollections () {
       window.fetch('/api/v1/collection', {

@@ -17,20 +17,47 @@
         {{ $t('admin.actions.delete') }}
       </button>
     </div>
+    <edit-collection-modal :show="editorVisible" :edit-collection="item" @hide="hideEditor"/>
   </div>
 </template>
 
 <script>
+import EditCollectionModal from "./EditCollectionModal";
 export default {
   name: "CollectionCard",
+  components: {EditCollectionModal},
   props: ['item'],
+  data () {
+    return {
+      editorVisible: false
+    }
+  },
   methods: {
     editThis () {
-
+      this.editorVisible = true
+    },
+    hideEditor () {
+      this.editorVisible = false
+      this.$emit('update')
     },
     deleteThis () {
-      const question = window.confirm(this.$t(''))
+      const question = window.confirm(`Really delete collection "${this.item.name}"?`)
+      if (question) {
+        window.fetch('/api/v1/collection/' + this.item.uuid, {
+          mode: 'cors',
+          method: 'DELETE',
+          cache: 'no-cache',
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.loginUser.token
+          }
+        }).then(() => {
+          this.$emit('update')
+        }).catch(error => {
+          console.error(error)
+        })
+      }
     }
+
   }
 }
 </script>
