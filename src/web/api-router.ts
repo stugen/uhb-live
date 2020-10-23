@@ -13,20 +13,26 @@ import {
 export const getApiRouter = (): Router => {
   const router = express.Router()
 
-  router.get('/chat/{slug}', restGetChatMessages)
-  router.delete('/chat/{uuid}', verifyTokenAuthenticity, restDeleteChatMessages)
+  router.get('/chat/:slug', restGetChatMessages)
+  router.delete('/chat/:uuid', verifyTokenAuthenticity, restDeleteChatMessages)
 
-  router.get('/collection/{slug}', restGetCollection)
-  router.get('/collection', verifyTokenAuthenticity, restGetAllCollections)
-  router.post('/collection', verifyTokenAuthenticity, restPostCollection)
-  router.put('/collection/{uuid}', verifyTokenAuthenticity, restPutCollection)
-  router.delete('/collection/{uuid}', verifyTokenAuthenticity, restDeleteCollection)
+  const collectionSubRouter = express.Router()
+  const streamSubRouter = express.Router()
 
-  router.get('/stream/{slug}', restGetStream)
-  router.get('/stream', verifyTokenAuthenticity, restGetAllStreams)
-  router.post('/stream', verifyTokenAuthenticity, restPostStream)
-  router.put('/stream/{uuid}', verifyTokenAuthenticity, restPutStream)
-  router.delete('/stream/{uuid}', verifyTokenAuthenticity, restDeleteStream)
+  collectionSubRouter.get('/:slug', restGetCollection)
+  collectionSubRouter.put('/:uuid', verifyTokenAuthenticity, restPutCollection)
+  collectionSubRouter.delete('/:uuid', verifyTokenAuthenticity, restDeleteCollection)
+  collectionSubRouter.get('/', verifyTokenAuthenticity, restGetAllCollections)
+  collectionSubRouter.post('/', verifyTokenAuthenticity, restPostCollection)
+
+  streamSubRouter.get('/:slug', restGetStream)
+  streamSubRouter.put('/:uuid', verifyTokenAuthenticity, restPutStream)
+  streamSubRouter.delete('/:uuid', verifyTokenAuthenticity, restDeleteStream)
+  streamSubRouter.get('/', verifyTokenAuthenticity, restGetAllStreams)
+  streamSubRouter.post('/', verifyTokenAuthenticity, restPostStream)
+
+  router.use('/collection', collectionSubRouter)
+  router.use('/stream', streamSubRouter)
 
   return router
 }
