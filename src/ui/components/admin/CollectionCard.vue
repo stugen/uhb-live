@@ -66,3 +66,15 @@ export default {
   }
 }
 </script>
+
+<style>
+.card-content > span {
+  display: block;
+  margin-block-end: 0.25rem;
+  word-break: break-all;
+}
+.card {
+  background-color: #f7f7f7;
+  margin-block-end: 1.5rem;
+}
+</style>
