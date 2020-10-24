@@ -16,7 +16,9 @@ export default {
   props: ['item'],
   computed: {
     descriptionHtml () {
-      return markdownIt().render(this.item.description)
+      return markdownIt({
+        linkify: true
+      }).render(this.item.description)
     }
   }
 }

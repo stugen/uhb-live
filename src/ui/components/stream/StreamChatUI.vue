@@ -53,7 +53,9 @@ export default {
   computed: {
     description () {
       const markdown = this.metadata.description || ''
-      return markdownIt().render(markdown)
+      return markdownIt({
+        linkify: true
+      }).render(markdown)
     }
   },
   props: {

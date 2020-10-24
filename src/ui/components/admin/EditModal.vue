@@ -36,7 +36,7 @@
           <label class="label" for="em-col">{{ $t('admin.details.collection') }}</label>
           <div class="select">
             <select id="em-col" v-model="stream.collection">
-              <option value="">{{ $t('common.none') }}</option>
+              <option value="" selected>{{ $t('common.none') }}</option>
               <option v-for="col in collections" :key="col.uuid" :value="col.uuid">{{ col.name }} ({{ col.shortName }})</option>
             </select>
           </div>
