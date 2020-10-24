@@ -3,11 +3,11 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">{{ this.stream.uuid === '' ? $t('admin.editor.titleNew') : $t('admin.editor.titleEdit') }}</p>
+        <p class="modal-card-title">{{ this.stream.uuid === '' ? $t('admin.editor.titleNewStream') : $t('admin.editor.titleEditStream') }}</p>
       </header>
       <div class="modal-card-body">
         <div class="field">
-          <label class="label" for="em-title">{{ $t('admin.details.name') }}</label>
+          <label class="label" for="em-title">{{ $t('admin.details.nameStream') }}</label>
           <div class="control">
             <input class="input" type="text" :placeholder="this.$t('admin.placeholder.name')" v-model="stream.name" id="em-title"/>
           </div>

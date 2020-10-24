@@ -13,7 +13,7 @@
       </span>
       <span>
         <b>{{ $t('admin.details.description') }}: </b>
-        <span>{{ stream.description.substr(0, 100) + '&hellip;' }}</span>
+        <span>{{ stream.description.substr(0, 100) }}&hellip;</span>
       </span>
       <span>
         <b>{{ $t('admin.details.chatEnabled') }}: </b>

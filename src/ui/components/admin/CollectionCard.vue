@@ -1,11 +1,16 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <p class="title">{{ item.name }}</p>
-      <router-link :to="'/c/' + item.shortName">
-        <p class="subtitle">{{ item.shortName }}</p>
-      </router-link>
-      <p class="description">{{ item.description.substr(0, 100) }}&hellip;</p>
+      <h2 class="is-size-4">{{ item.name }}</h2>
+      <br />
+      <span>
+        <b>{{ $t('admin.details.link') }}: </b>
+        <router-link :to="`/c/${item.shortName}`">/c/{{ item.shortName }}</router-link>
+      </span>
+      <span>
+        <b>{{ $t('admin.details.description') }}: </b>
+        <span>{{ item.description.substr(0, 100) }}&hellip;</span>
+      </span>
     </div>
     <div class="card-footer field is-grouped">
       <button class="card-footer-item button is-info" @click="editThis">
@@ -41,7 +46,7 @@ export default {
       this.$emit('update')
     },
     deleteThis () {
-      const question = window.confirm(`Really delete collection "${this.item.name}"?`)
+      const question = window.confirm(this.$t('admin.hints.deleteCollection', { name: this.item.name }))
       if (question) {
         window.fetch('/api/v1/collection/' + this.item.uuid, {
           mode: 'cors',

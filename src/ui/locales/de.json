@@ -16,7 +16,8 @@
     "notFound": {
       "head": "Die angeforderte Seite konnte nicht gefunden werden.",
       "description": "Möglicherweise liegt ein Tippfehler in der URL vor oder diese Seite wurde entfernt."
-    }
+    },
+    "none": "keine"
   },
   "stream": {
     "startsLater": "Dieser Stream startet am {date} um {time} Uhr.",
@@ -42,7 +43,7 @@
   "admin": {
     "title": "Admin-Modus",
     "actions": {
-      "add": "Stream/Video hinzufügen",
+      "add": "Hinzufügen",
       "refresh": "Ansicht aktualisieren",
       "edit": "Bearbeiten",
       "delete": "Löschen",
@@ -52,20 +53,25 @@
     },
     "hints": {
       "clearChat": "Wirklich den Chat-Verlauf vom Stream '{name}' löschen?",
-      "deleteStream": "Wirklich den Stream '{name}' löschen?"
+      "deleteStream": "Wirklich den Stream '{name}' löschen?",
+      "deleteCollection": "Wirklich die Sammlung '{name}' löschen?"
     },
     "details": {
-      "name": "Video/Stream-Name",
+      "nameStream": "Video/Stream-Name",
+      "nameCollection": "Sammlungs-Name",
       "link": "Link",
       "source": "Medienquelle",
       "chatEnabled": "Chat aktiviert",
       "scheduled": "Geplant",
       "no": "Nein",
-      "description": "Beschreibungstext"
+      "description": "Beschreibungstext",
+      "collection": "Sammlung"
     },
     "editor": {
-      "titleNew": "Neuen Stream/Video hinzufügen",
-      "titleEdit": "Stream/Video bearbeiten",
+      "titleNewStream": "Neuen Stream/Video hinzufügen",
+      "titleEditStream": "Stream/Video bearbeiten",
+      "titleNewCollection": "Neue Sammlung anlegen",
+      "titleEditCollection": "Sammlung bearbeiten",
       "supportedMedia": "Unterstützt werden Videos in gängigen Browser-Formaten sowie HLS-Streams.",
       "failure": "Fehler beim Speichern"
     },

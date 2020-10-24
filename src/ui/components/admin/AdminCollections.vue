@@ -1,6 +1,6 @@
 <template>
   <main class="container px-4">
-    <h1 class="is-size-3">{{ $t('admin.collections') }}</h1>
+    <h1 class="is-size-3 mb-2">{{ $t('admin.collections') }}</h1>
     <button class="button" @click="showEditor">
       <span class="icon"><font-awesome-icon icon="plus" class="fa"/></span>
       {{ $t('admin.actions.add') }}

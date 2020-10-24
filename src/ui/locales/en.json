@@ -16,7 +16,8 @@
     "notFound": {
       "head": "The requested page could not be found.",
       "description": "Maybe there's a typo in the URL or the page was deleted."
-    }
+    },
+    "none": "none"
   },
   "stream": {
     "startsLater": "This stream starts on the {date} at {time}.",
@@ -42,7 +43,7 @@
   "admin": {
     "title": "Administration mode",
     "actions": {
-      "add": "Add stream/video",
+      "add": "Add",
       "refresh": "Refresh view",
       "edit": "Edit",
       "delete": "Delete",
@@ -52,20 +53,25 @@
     },
     "hints": {
       "clearChat": "Really delete chat history of stream '{name}'?",
-      "deleteStream": "Really delete stream '{name}'?"
+      "deleteStream": "Really delete stream '{name}'?",
+      "deleteCollection": "Really delete collection '{name}'?"
     },
     "details": {
-      "name": "Name of video/stream",
+      "nameStream": "Name of video/stream",
+      "nameCollection": "Name of collection",
       "link": "Link",
       "source": "Media source",
       "chatEnabled": "Chat enabled",
       "scheduled": "Scheduled",
       "no": "No",
-      "description": "Description"
+      "description": "Description",
+      "collection": "Collection"
     },
     "editor": {
-      "titleNew": "Add new stream/video",
-      "titleEdit": "Edit stream/video",
+      "titleNewStream": "Add new stream/video",
+      "titleEditStream": "Edit stream/video",
+      "titleNewCollection": "Add new collection",
+      "titleEditCollection": "Edit collection",
       "supportedMedia": "Supported are the usual browser video-formats as well as HLS-streams.",
       "failure": "Failure while saving"
     },
