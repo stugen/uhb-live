@@ -50,7 +50,8 @@ export const restPutStream = async (req: Request, res: Response): Promise<void> 
       data.sources,
       data.description,
       data.chat,
-      data.startTime
+      data.startTime,
+      data.collection as unknown as string
     )
     res.json(updated)
   } catch (e) {
@@ -72,7 +73,8 @@ export const restPostStream = async (req: Request, res: Response): Promise<void>
       data.sources,
       data.description,
       data.chat,
-      data.startTime
+      data.startTime,
+      data.collection as unknown as string
     )
     res.json(newStream)
   } catch (e) {

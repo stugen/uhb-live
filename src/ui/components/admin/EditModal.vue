@@ -33,6 +33,15 @@
           </div>
         </div>
         <div class="field">
+          <label class="label" for="em-col">{{ $t('admin.details.collection') }}</label>
+          <div class="select">
+            <select id="em-col" v-model="stream.collection">
+              <option value="">{{ $t('common.none') }}</option>
+              <option v-for="col in collections" :key="col.uuid" :value="col.uuid">{{ col.name }} ({{ col.shortName }})</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
           <div class="control">
             <label class="checkbox" for="em-chat">
               <b>{{ $t('admin.details.chatEnabled') }}</b>
@@ -80,12 +89,14 @@ export default {
           weight: 1,
           url: ''
         }],
-        startTime: 0
+        startTime: 0,
+        collection: ''
       },
       startDateTimeInput: '',
       scheduled: false,
       names: [],
-      failure: false
+      failure: false,
+      collections: []
     }
   },
   computed: {
@@ -123,6 +134,20 @@ export default {
         .then(response => response.json())
         .then(json => {
           this.names = json.map(str => str.shortName)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+      window.fetch('/api/v1/collection', {
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+          authorization: 'Bearer ' + this.$store.state.loginUser.token
+        }
+      })
+        .then(response => response.json())
+        .then(json => {
+          this.collections = json
         })
         .catch(error => {
           console.error(error)

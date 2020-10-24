@@ -25,7 +25,8 @@ export class Collection {
 
   /** Streams/videos that are part of this collection. */
   @OneToMany('Stream', 'collection', {
-    eager: true
+    eager: true,
+    onDelete: 'SET NULL'
   })
   items: Stream[]
 }

@@ -1,5 +1,5 @@
 import { Stream } from '../models/Stream'
-import { streamRepository, streamSourceRepository } from '../helper/database'
+import { collectionRepository, streamRepository, streamSourceRepository } from '../helper/database'
 import { DeleteResult } from 'typeorm'
 import { clearChat } from './chat'
 import { StreamSource, StreamSourceInput } from '../models/StreamSource'
@@ -52,6 +52,7 @@ export const deleteStream = async (uuid: string): Promise<DeleteResult> => {
  * @param description {String} Description text of the stream/video. Accepts markdown-formatting.
  * @param chat {boolean} True if the chat should be enabled for this stream.
  * @param startTime {number} 0 if the stream should be available instantly, unix timestamp of release time otherwise.
+ * @param collectionUuid {string} The uuid of the associated collection the video should be part of.
  */
 export const addNewStream = async (
   name: string,
@@ -59,7 +60,8 @@ export const addNewStream = async (
   src: StreamSourceInput[],
   description: string,
   chat: boolean,
-  startTime: number
+  startTime: number,
+  collectionUuid: string
 ): Promise<Stream> => {
   const sources: StreamSource[] = []
   for (const source of src) {
@@ -77,6 +79,13 @@ export const addNewStream = async (
   stream.description = description
   stream.chat = chat
   stream.startTime = startTime
+  if (collectionUuid !== '') {
+    stream.collection = await collectionRepository.findOne({
+      uuid: collectionUuid
+    })
+  } else {
+    stream.collection = null
+  }
   return streamRepository.save(stream)
 }
 
@@ -89,6 +98,7 @@ export const addNewStream = async (
  * @param description {String} Description text of the stream/video. Accepts markdown-formatting.
  * @param chat {boolean} True if the chat should be enabled for this stream.
  * @param startTime {number} 0 if the stream should be available instantly, unix timestamp of release time otherwise.
+ * @param collectionUuid {string} The uuid of the associated collection the video should be part of.
  */
 export const updateStream = async (
   uuid: string,
@@ -97,7 +107,8 @@ export const updateStream = async (
   newSrc: StreamSourceInput[],
   description: string,
   chat: boolean,
-  startTime: number
+  startTime: number,
+  collectionUuid: string
 ): Promise<Stream> => {
   const stream = await streamRepository.findOne({
     uuid
@@ -118,5 +129,12 @@ export const updateStream = async (
   stream.description = description
   stream.chat = chat
   stream.startTime = startTime
+  if (collectionUuid !== '') {
+    stream.collection = await collectionRepository.findOne({
+      uuid: collectionUuid
+    })
+  } else {
+    stream.collection = null
+  }
   return streamRepository.save(stream)
 }

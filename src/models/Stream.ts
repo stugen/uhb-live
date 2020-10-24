@@ -39,6 +39,8 @@ export class Stream {
   chat: boolean;
 
   /** Collection to which this stream/video belongs to. */
-  @ManyToOne('Collection', 'items')
+  @ManyToOne('Collection', 'items', {
+    onDelete: 'SET NULL'
+  })
   collection: Collection
 }
