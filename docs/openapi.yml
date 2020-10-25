@@ -379,7 +379,6 @@ components:
       required:
         - name
         - shortName
-        - items
       properties:
         uuid:
           type: string
