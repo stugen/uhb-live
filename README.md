@@ -1,8 +1,5 @@
 # Uni Bremen Live - video/stream interface
 
-**This is the develop branch.**  
-It contains uncomplete and undocumented code. Running it may fail and falls under your own risk.
-
 For more stable code see the "main"-branch or the releases.
 
 ## Docker setup
@@ -11,7 +8,7 @@ For more stable code see the "main"-branch or the releases.
 3. Start the application with `docker-compose up -d`
 
 ## Manual setup
-1. Ensure node 12 or 14 is installed. If it's not, checkout [nvm](http://nvm.sh)
+1. Ensure node 12 or 14 is installed. If it's not, checkout [nvm](http://nvm.sh).
 2. Ensure yarn is installed. If it's not run `npm i -g yarn`.
 3. Clone this repository and change to that directory.
 4. Install dependencies with `yarn install`.
@@ -29,7 +26,7 @@ For MariaDB databases the URL looks as following: `mariadb://username:password@h
 
 ## Configuration
 Copy the file `config.example.yaml` to `config.yaml` and change the values accordingly to your environment.
-You can find minimal documentation and environment variables for reference in `src/config/schema.ts`.
+You can find a minimal documentation and environment variables for reference in `src/config/schema.ts`.
 
 ## Development
 1. Follow the steps 1-5 from the manual setup.

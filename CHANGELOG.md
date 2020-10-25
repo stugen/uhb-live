@@ -2,6 +2,22 @@
 
 Please note that the API is subject to change in all 0.x minor-versions. 
 
+## 0.3.0 :: 2020-10-25
+**BREAKING**:
+ - URL endpoints have changed, they're now /v/video-name and /c/collection-name
+ - The database scheme has changed as one stream/video may now have multiple sources
+ - The API is now available under /api/v1 instead of /data
+ 
+**Added**:
+ - Collections that may contain multiple videos
+ - Markdown-enabled descriptions for video/streams and collections
+ - Filter mechanism for bad words in chat and URLs
+ - Quality selector for video player
+ - OpenAPI spec
+ 
+**Improved**:
+ - Chat messages older than 24 hours now include the date
+
 ## 0.2.0 :: 2020-09-08
 **Added**:
  - Config option `reverseProxy` to fix problems with reverse-proxies

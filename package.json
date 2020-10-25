@@ -1,6 +1,6 @@
 {
   "name": "uhb-live",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Web-frontend for video streams with open chat ability",
   "main": "dist/app.js",
   "type": "module",
