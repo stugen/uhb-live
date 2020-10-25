@@ -1,9 +1,14 @@
 import jwt from 'jsonwebtoken'
+import url from 'url'
+import BadWordsFilter from 'bad-words'
 import { DeleteResult } from 'typeorm'
 import { chatMessageRepository } from '../helper/database'
 import { ChatMessage } from '../models/ChatMessage'
 import { config } from '../config/config-loader'
 const { verify } = jwt
+
+// eslint-disable-next-line no-control-regex
+const URL_REGEX = new RegExp('(^|[ \t\r\n])((ftp|http|https|mailto|news|file|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))', 'g')
 
 /**
  * Queries and returns the most recent 100 chat messages for a stream/video room.
@@ -40,8 +45,23 @@ export const addChatMessage = (sender: string, content: string, stream: string, 
       console.error('Token decoding failed')
     }
   }
+  const badWordsFilter = new BadWordsFilter()
+  let filtered = badWordsFilter.clean(content)
+  if (!verified) {
+    filtered.match(URL_REGEX).forEach(match => {
+      try {
+        const hostname = new url.URL(match).hostname
+        if (!/(?:stugen\.de|uni-bremen\.de|uni-bremen\.live|stw-bremen\.de|uni-bremen\.zoom\.us)$/.test(hostname)) {
+          filtered = filtered.replace(match, '[Link removed]')
+        }
+      } catch (e) {
+        filtered = filtered.replace(match, '[Link removed]')
+      }
+    })
+  }
+
   const msg = new ChatMessage()
-  msg.content = content // TODO Filter out links with non-whitelisted domains as well as curses and insults.
+  msg.content = filtered
   msg.sender = sender
   msg.stream = stream
   msg.senderMail = undefined // Note that this is subject to change in future versions.
