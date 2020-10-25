@@ -1,6 +1,6 @@
 <template>
   <div :data-msg="msg.uuid">
-    <time class="msg-time" :title="`${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString()}`">{{dateObj.toLocaleTimeString()}}</time>
+    <time class="msg-time" :title="`${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString()}`">{{dateStr}}</time>
     <span class="msg-sender" :class="{'email-link': !!msg.senderMail}" @click="clickSender">
       {{msg.sender}}
       <font-awesome-icon icon="check-circle" v-if="msg.senderVerified" :title="this.$t('chat.verifiedAccount')"/>
@@ -16,6 +16,14 @@ export default {
   data () {
     return {
       dateObj: new Date(this.msg.timestamp * 1000)
+    }
+  },
+  computed: {
+    dateStr () {
+      if (this.dateObj.valueOf() < Date.now() - 24 * 3600 * 1000) {
+        return `${this.dateObj.toLocaleDateString()} ${this.dateObj.toLocaleTimeString()}`
+      }
+      return this.dateObj.toLocaleTimeString()
     }
   },
   methods: {
