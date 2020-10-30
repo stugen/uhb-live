@@ -37,7 +37,7 @@
 <script>
 export default {
   name: "EditCollectionModal",
-  props: ['show', 'edit-collection'],
+  props: ['show', 'editCollection'],
   data () {
     return {
       failure: false,
@@ -54,14 +54,14 @@ export default {
       this.$emit('hide')
     },
     save () {
-      window.fetch(`/api/v1/collection${this.uuid && this.uuid !== '' ? '/' + this.uuid : ''}`, {
+      window.fetch(`/api/v1/collection${this.collection.uuid && this.collection.uuid !== '' ? '/' + this.collection.uuid : ''}`, {
         mode: 'cors',
         headers: {
           authorization: 'Bearer ' + this.$store.state.loginUser.token,
           'content-type': 'application/json'
         },
         body: JSON.stringify(this.collection),
-        method: !this.uuid || this.uuid === '' ? 'POST' : 'PUT'
+        method: !this.collection.uuid || this.collection.uuid === '' ? 'POST' : 'PUT'
       }).then(() => {
         this.failure = false
         this.hide()
@@ -71,7 +71,7 @@ export default {
       })
     },
     update () {
-      this.collection = this['edit-collection']
+      this.collection = this.editCollection
     }
   },
   computed: {

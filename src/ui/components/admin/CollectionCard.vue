@@ -22,7 +22,7 @@
         {{ $t('admin.actions.delete') }}
       </button>
     </div>
-    <edit-collection-modal :show="editorVisible" :edit-collection="item" @hide="hideEditor"/>
+    <edit-collection-modal :show="editorVisible" :edit-collection="editItem" @hide="hideEditor" ref="editor"/>
   </div>
 </template>
 
@@ -34,11 +34,16 @@ export default {
   props: ['item'],
   data () {
     return {
-      editorVisible: false
+      editorVisible: false,
+      editItem: {}
     }
+  },
+  created () {
+    this.editItem = this.item
   },
   methods: {
     editThis () {
+      this.$refs.editor.update()
       this.editorVisible = true
     },
     hideEditor () {
