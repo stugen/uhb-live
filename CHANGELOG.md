@@ -7,6 +7,9 @@ Please note that the API is subject to change in all 0.x minor-versions.
  - YouTube videos were not recognized properly
  - Database field types prevented descriptions from being longer than 255 chars
  - Collections couldn't be edited, as the wrong dialog opened
+ 
+**Improved**:
+ - The window title will be adjusted on collection pages too
 
 ## 0.3.0 :: 2020-10-25
 **BREAKING**:

@@ -63,6 +63,7 @@ export default {
     getMetadata(name, MetadataType.COLLECTION).then(collection => {
       this.collection = collection
       this.error = false
+      document.title = `${this.collection.name} - ${this.$t('common.title')}`
     }).catch(error => {
       console.error(error)
       this.error = true
