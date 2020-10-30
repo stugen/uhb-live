@@ -24,15 +24,15 @@
       "groupName": "vue monorepo"
     },
     {
-      "groupName": "definitelyTyped",
-      "packagePatterns": [
-        "^@types/"
-      ]
-    },
-    {
       "groupName": "FontAwesome",
       "packagePatterns": [
         "^@fortawesome/"
+      ]
+    },
+    {
+      "groupName": "definitelyTyped",
+      "packagePatterns": [
+        "^@types/"
       ]
     }
   ],
