@@ -3,7 +3,7 @@ openapi: 3.0.3
 info:
   title: Uni Bremen Live - stream/video interface
   description: Web-interface with chat functionality for video streams and files.
-  version: 0.3.0
+  version: 0.3.1
   license:
     name: MIT
     url: https://github.com/stugen/uhb-live/blob/main/LICENSE

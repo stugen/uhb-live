@@ -1,7 +1,7 @@
 FROM node:12-alpine
 
 LABEL maintainer="Erik Michelson <opensource@erik.michelson.eu>" \
-      version="0.3.0"
+      version="0.3.1"
 
 WORKDIR /app
 
