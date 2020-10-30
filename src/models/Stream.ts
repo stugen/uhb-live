@@ -21,7 +21,7 @@ export class Stream {
   name: string;
 
   /** Description of the stream. Allows markdown-formatting. */
-  @Column()
+  @Column({ type: 'text' })
   description: string;
 
   /** List of weighted sources that are available for the stream/video. */

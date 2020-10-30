@@ -20,7 +20,7 @@ export class Collection {
   shortName: string;
 
   /** Description of the collection. Allows markdown-formatting. */
-  @Column()
+  @Column({ type: 'text' })
   description: string;
 
   /** Streams/videos that are part of this collection. */

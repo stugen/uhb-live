@@ -5,6 +5,7 @@ Please note that the API is subject to change in all 0.x minor-versions.
 ## UNRELEASED
 **Fixed**:
  - YouTube videos were not recognized properly
+ - Database field types prevented descriptions from being longer than 255 chars
 
 ## 0.3.0 :: 2020-10-25
 **BREAKING**:
