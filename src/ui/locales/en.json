@@ -17,7 +17,8 @@
       "head": "The requested page could not be found.",
       "description": "Maybe there's a typo in the URL or the page was deleted."
     },
-    "none": "none"
+    "none": "none",
+    "loading": "Loading ..."
   },
   "stream": {
     "startsLater": "This stream starts on the {date} at {time}.",

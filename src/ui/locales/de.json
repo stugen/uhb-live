@@ -17,7 +17,8 @@
       "head": "Die angeforderte Seite konnte nicht gefunden werden.",
       "description": "Möglicherweise liegt ein Tippfehler in der URL vor oder diese Seite wurde entfernt."
     },
-    "none": "keine"
+    "none": "keine",
+    "loading": "Wird geladen ..."
   },
   "stream": {
     "startsLater": "Dieser Stream startet am {date} um {time} Uhr.",
