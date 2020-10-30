@@ -37,7 +37,7 @@ export default {
     } else {
       this.options.sources[0].src = this.src[0].url
     }
-    if (/^https?:\/\/(?:www)\.youtu(?:\.be|be\.com)\//.test(this.src)) {
+    if (/^https?:\/\/(?:www)\.youtu(?:\.be|be\.com)\//.test(this.src[0].url)) {
       this.options.sources[0].type = 'video/youtube'
     }
   },

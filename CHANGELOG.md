@@ -2,6 +2,10 @@
 
 Please note that the API is subject to change in all 0.x minor-versions. 
 
+## UNRELEASED
+**Fixed**:
+ - YouTube videos were not recognized properly
+
 ## 0.3.0 :: 2020-10-25
 **BREAKING**:
  - URL endpoints have changed, they're now /v/video-name and /c/collection-name
