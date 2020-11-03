@@ -89,7 +89,7 @@
     "sass-loader": "9.0.3",
     "speccy": "0.11.0",
     "style-loader": "1.3.0",
-    "ts-loader": "8.0.5",
+    "ts-loader": "8.0.7",
     "typescript": "4.0.5",
     "vue-loader": "15.9.5",
     "vue-style-loader": "4.1.2",
