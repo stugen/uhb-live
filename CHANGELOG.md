@@ -2,7 +2,7 @@
 
 Please note that the API is subject to change in all 0.x minor-versions. 
 
-## UNRELEASED
+## 0.3.2 :: 2020-11-03
 **URGENT!**  
 This release fixed an issue that caused the server to randomly crash. Administrators should install it as soon as possible. 
 
