@@ -50,7 +50,7 @@
     "randomstring": "1.1.5",
     "reflect-metadata": "0.1.13",
     "sqlite3": "5.0.0",
-    "typeorm": "0.2.28",
+    "typeorm": "0.2.29",
     "video.js": "7.8.4",
     "videojs-contrib-quality-levels": "2.0.9",
     "videojs-hls-quality-selector": "1.1.4",
