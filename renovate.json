@@ -38,6 +38,6 @@
   ],
   "prHourlyLimit": 0,
   "schedule": [
-    "on Wednesday"
+    "every weekday"
   ]
 }
