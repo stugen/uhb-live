@@ -66,6 +66,10 @@ module.exports = {
         extensions: [ '.tsx', '.ts', '.js', '.vue', '.json' ],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
+        },
+        fallback: {
+            'crypto': require.resolve('crypto-browserify'),
+            'stream': require.resolve('stream-browserify')
         }
     },
     plugins: [
@@ -77,7 +81,8 @@ module.exports = {
             template: "./src/ui/index.ejs",
             pkg: pkg,
             author: pkg.author.replace(/<[\w.@-]+>$/, '').trim(),
-            git: pkg.repository.url.replace(/\.git$/, '')
+            git: pkg.repository.url.replace(/\.git$/, ''),
+            process
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
