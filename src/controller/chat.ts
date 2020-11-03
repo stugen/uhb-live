@@ -48,16 +48,19 @@ export const addChatMessage = (sender: string, content: string, stream: string, 
   const badWordsFilter = new BadWordsFilter()
   let filtered = badWordsFilter.clean(content)
   if (!verified) {
-    filtered.match(URL_REGEX).forEach(match => {
-      try {
-        const hostname = new url.URL(match).hostname
-        if (!/(?:stugen\.de|uni-bremen\.de|uni-bremen\.live|stw-bremen\.de|uni-bremen\.zoom\.us)$/.test(hostname)) {
+    const matches = filtered.match(URL_REGEX)
+    if (matches) {
+      matches.forEach(match => {
+        try {
+          const hostname = new url.URL(match).hostname
+          if (!/(?:stugen\.de|uni-bremen\.de|uni-bremen\.live|stw-bremen\.de|uni-bremen\.zoom\.us)$/.test(hostname)) {
+            filtered = filtered.replace(match, '[Link removed]')
+          }
+        } catch (e) {
           filtered = filtered.replace(match, '[Link removed]')
         }
-      } catch (e) {
-        filtered = filtered.replace(match, '[Link removed]')
-      }
-    })
+      })
+    }
   }
 
   const msg = new ChatMessage()

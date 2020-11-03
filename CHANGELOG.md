@@ -2,6 +2,16 @@
 
 Please note that the API is subject to change in all 0.x minor-versions. 
 
+## UNRELEASED
+**URGENT!**  
+This release fixed an issue that caused the server to randomly crash. Administrators should install it as soon as possible. 
+
+**Fixed**:
+ - Chat messages from anonymous users without URLs in the content, caused the filter to fail and the server to crash.
+ 
+**Updated**:
+ - Several dependencies were updated.
+
 ## 0.3.1 :: 2020-10-30
 **Fixed**:
  - YouTube videos were not recognized properly
