@@ -8,7 +8,7 @@ import { config } from '../config/config-loader'
 const { verify } = jwt
 
 // eslint-disable-next-line no-control-regex
-const URL_REGEX = new RegExp('(^|[ \t\r\n])((ftp|http|https|mailto|news|file|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))', 'g')
+const URL_REGEX = /(^|[ \t\r\n])((ftp|http|https|mailto|news|file|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))/g
 
 /**
  * Queries and returns the most recent 100 chat messages for a stream/video room.
